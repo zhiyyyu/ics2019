@@ -13,6 +13,6 @@
 
 extern CPU_state cpu;
 
-void isa_reg_display();
+// void isa_reg_display();
 
 #endif
