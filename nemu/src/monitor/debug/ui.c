@@ -37,9 +37,8 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-	int n;
-  if(strlen(args) < 1) n = 1;
-	else n = atoi(args);
+	int n = 1;
+  if(strlen(args) > 0) n = atoi(args);
 	for(int i=0;i<n;i++){
 		cpu_exec(-1);
 	}
