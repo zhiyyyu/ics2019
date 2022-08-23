@@ -173,7 +173,6 @@ uint32_t eval(uint32_t p, uint32_t q) {
     /* We should do more things here. */
     // the position of main op in the token expression
     uint32_t op = get_main_op(p, q);
-    Log("main op: %c", tokens[op].type);
     uint32_t val1 = eval(p, op - 1);
     uint32_t val2 = eval(op + 1, q);
     Log("expr: %d %c %d", val1, tokens[op].type, val2);
@@ -207,7 +206,7 @@ bool check_parentheses(uint32_t p, uint32_t q){
 
 uint32_t get_main_op(uint32_t p, uint32_t q){
   int p_idx = 0, t_idx = -1;
-  for(int i=q;i>=p;i--){
+  for(uint32_t i=q;i>=p;i--){
     if(tokens[i].type == ')'){
       p_idx++;
     } else if(tokens[i].type == '('){
