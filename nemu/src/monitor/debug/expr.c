@@ -35,7 +35,7 @@ static struct rule {
   {"\\)", ')'},               // right
   {"[1-9][0-9]*", TK_NUM},    // number
   {"0(X|x)[0-9]*", TK_HEX},   // hex
-  {"($(0|pc)|ra|(s|g|t)p|t[0-6]|s[0-11]|a[0-7])", TK_REG},    // register
+  {"(\\$(0|pc)|ra|(s|g|t)p|t[0-6]|s[0-11]|a[0-7])", TK_REG},    // register
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
