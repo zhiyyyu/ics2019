@@ -131,7 +131,7 @@ static bool make_token(char *e) {
 
 uint32_t eval(uint32_t p, uint32_t q);
 bool check_parentheses(uint32_t p, uint32_t q);
-Token* get_main_op(uint32_t p, uint32_t q);
+uint32_t get_main_op(uint32_t p, uint32_t q);
 bool is_op(int type);
 
 uint32_t expr(char *e, bool *success) {
@@ -166,11 +166,11 @@ uint32_t eval(uint32_t p, uint32_t q) {
   else {
     /* We should do more things here. */
     // the position of main op in the token expression
-    Token* op = get_main_op(p, q);
+    uint32_t op = get_main_op(p, q);
     uint32_t val1 = eval(p, op - 1);
     uint32_t val2 = eval(op + 1, q);
 
-    switch (op->type) {
+    switch (tokens[op].type) {
       case '+': return val1 + val2; break;
       case '-': return val1 - val2; break;
       case '*': return val1 * val2; break;
@@ -197,7 +197,7 @@ bool check_parentheses(uint32_t p, uint32_t q){
   return true;
 }
 
-Token* get_main_op(uint32_t p, uint32_t q){
+uint32_t get_main_op(uint32_t p, uint32_t q){
   int p_idx = 0, t_idx = -1;
   for(int i=q;i>=p;i--){
     if(tokens[i].type == ')'){
@@ -209,7 +209,7 @@ Token* get_main_op(uint32_t p, uint32_t q){
     }
   }
   assert(t_idx > 0);
-  return tokens + t_idx;
+  return t_idx;
 }
 
 inline bool is_op(int type){
