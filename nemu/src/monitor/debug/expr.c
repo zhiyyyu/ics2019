@@ -96,10 +96,8 @@ static bool make_token(char *e) {
          */
         
         switch (rules[i].token_type) {
-        case TK_NUM: 
+        case TK_NUM: case TK_HEX:
           strncpy(tokens[nr_token].str, substr_start, substr_len); break;
-        case TK_HEX:
-          strncpy(tokens[nr_token].str, substr_start+2, substr_len-2); break;
         case TK_REG:
           strncpy(reg_name, substr_start, substr_len);
           if(!strcmp(reg_name, "$pc")){
@@ -157,8 +155,11 @@ uint32_t eval(uint32_t p, uint32_t q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-    Log("single token: 0X%x", atoi(tokens[p].str));
-    return atoi(tokens[p].str);
+    uint32_t val;
+    if(tokens[p].type == TK_HEX) val = strtol(tokens[p].str+2, NULL, 16);
+    else if(tokens[p].type == TK_NUM) val = atoi(tokens[p].str);
+    Log("single token: 0X%x", val);
+    return val;
   }
   else if (check_parentheses(p, q) == true) {
     /* The expression is surrounded by a matched pair of parentheses.
