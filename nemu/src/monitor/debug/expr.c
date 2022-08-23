@@ -146,6 +146,7 @@ uint32_t expr(char *e, bool *success) {
 }
 
 uint32_t eval(uint32_t p, uint32_t q) {
+  Log("eval(%d, %d)", p, q);
   if (p > q) {
     /* Bad expression */
     panic("bad experssion");
