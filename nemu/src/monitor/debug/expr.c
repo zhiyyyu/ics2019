@@ -24,7 +24,7 @@ static struct rule {
   /* TODO: Add more rules.
    * Pay attention to the precedence level of different rules.
    */
-  {"^\\*", TK_DEREF},        
+  // {"(\\?<=(^|\\+|-|\\*||/))\\*", TK_DEREF}, 
   {" +", TK_NOTYPE},          // spaces
   {"\\+", '+'},               // plus
   {"-", '-'},                 // minus
@@ -184,11 +184,15 @@ uint32_t eval(uint32_t p, uint32_t q) {
     // Log("expr: %d %c %d", val1, tokens[op].type, val2);
 
     switch (tokens[op].type) {
-      case '+': return val1 + val2; break;
-      case '-': return val1 - val2; break;
-      case '*': return val1 * val2; break;
-      case '/': return val1 / val2; break;
-      case TK_DEREF: return paddr_read(val2, 4);
+      case '+': return val1 + val2;
+      case '-': return val1 - val2;
+      case '*': 
+        if(op == 0 || op > 0 && is_op(tokens[op-1].str)){
+          return paddr_read(val2, 4);
+        }
+        return val1 * val2;
+      case '/': return val1 / val2;
+      // case TK_DEREF: return paddr_read(val2, 4);
       default: assert(0);
     }
   }
