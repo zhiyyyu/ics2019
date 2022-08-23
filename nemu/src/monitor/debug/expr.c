@@ -172,6 +172,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
   else {
     /* We should do more things here. */
     // the position of main op in the token expression
+    Log("main op");
     uint32_t op = get_main_op(p, q);
     Log("main op: %c", tokens[op].type);
     uint32_t val1 = eval(p, op - 1);
@@ -217,7 +218,6 @@ uint32_t get_main_op(uint32_t p, uint32_t q){
     }
   }
   assert(t_idx > 0);
-  Log("main op: %c", tokens[t_idx].type);
   return t_idx;
 }
 
