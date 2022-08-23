@@ -140,7 +140,7 @@ uint32_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  Log("make token: success.");
+  // Log("make token: success.");
   *success = true;
   return eval(0, nr_token-1);
 }
@@ -159,7 +159,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
     uint32_t val;
     if(tokens[p].type == TK_HEX) val = strtol(tokens[p].str+2, NULL, 16);
     else if(tokens[p].type == TK_NUM) val = atoi(tokens[p].str);
-    Log("single token: 0X%x", val);
+    // Log("single token: 0X%x", val);
     return val;
   }
   else if (check_parentheses(p, q)) {
@@ -173,10 +173,9 @@ uint32_t eval(uint32_t p, uint32_t q) {
     /* We should do more things here. */
     // the position of main op in the token expression
     uint32_t op = get_main_op(p, q);
-    Log("main op: %c", tokens[op].type);
     uint32_t val1 = eval(p, op - 1);
     uint32_t val2 = eval(op + 1, q);
-    Log("expr: %d %c %d", val1, tokens[op].type, val2);
+    // Log("expr: %d %c %d", val1, tokens[op].type, val2);
 
     switch (tokens[op].type) {
       case '+': return val1 + val2; break;
