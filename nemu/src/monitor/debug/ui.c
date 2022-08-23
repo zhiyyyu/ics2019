@@ -18,6 +18,7 @@ static char* rl_gets() {
     line_read = NULL;
   }
 
+	// 输出(nemu) ，并读取一行输入然后返回
   line_read = readline("(nemu) ");
 
   if (line_read && *line_read) {
@@ -46,6 +47,26 @@ static int cmd_si(char *args) {
   return 0;
 }
 
+static int cmd_info(char *args) {
+  return -1;
+}
+
+static int cmd_p(char *args) {
+  return -1;
+}
+
+static int cmd_x(char *args) {
+  return -1;
+}
+
+static int cmd_w(char *args) {
+  return -1;
+}
+
+static int cmd_d(char *args) {
+  return -1;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -57,6 +78,11 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "si [N]: Execute N step", cmd_si },
+	{ "info", "info SUBCMD: Print some infos", cmd_info },
+	{ "p", "p EXPR: Calc expr value", cmd_p },
+	{ "x", "x N EXPR: Print value of addr[EXPR, EXPR+N)", cmd_x },
+	{ "w", "w EXPR: Stop when EXPR changes", cmd_w },
+	{ "d", "d N: Delete watchpoint N", cmd_d },
 
   /* TODO: Add more commands */
 
