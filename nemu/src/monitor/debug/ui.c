@@ -54,6 +54,7 @@ static int cmd_info(char *args) {
 		isa_reg_display();
 	} else if(!strcmp(args, "w")){
 		// printf("info w\n");
+        TODO();
 	} else{
 		TODO();
 	}
@@ -61,19 +62,24 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char *args) {
-  return -1;
+  return 0;
 }
 
 static int cmd_x(char *args) {
-  return -1;
+  int n = atoi(strtok(NULL, " "));
+  int* addr = (int*)atoi(strtok(NULL, " "));
+  for(int i=0;i<n;i++){
+    printf("%x: 0x%x\n", addr[i]);
+  }
+  return 0;
 }
 
 static int cmd_w(char *args) {
-  return -1;
+  return 0;
 }
 
 static int cmd_d(char *args) {
-  return -1;
+  return 0;
 }
 
 static int cmd_help(char *args);
