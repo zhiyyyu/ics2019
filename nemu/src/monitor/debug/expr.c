@@ -223,7 +223,7 @@ uint32_t get_main_op(uint32_t p, uint32_t q){
       t_idx = i;
     }
   }
-  assert(t_idx > 0);
+  assert(t_idx >= 0);
   return t_idx;
 }
 
