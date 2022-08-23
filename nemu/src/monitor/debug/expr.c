@@ -96,9 +96,10 @@ static bool make_token(char *e) {
          */
         
         switch (rules[i].token_type) {
-        case TK_NUM: case TK_HEX:
-          strncpy(tokens[nr_token].str, substr_start, substr_len);
-          break;
+        case TK_NUM: 
+          strncpy(tokens[nr_token].str, substr_start, substr_len); break;
+        case TK_HEX:
+          strncpy(tokens[nr_token].str, substr_start+2, substr_len-2); break;
         case TK_REG:
           strncpy(reg_name, substr_start, substr_len);
           if(!strcmp(reg_name, "$pc")){
