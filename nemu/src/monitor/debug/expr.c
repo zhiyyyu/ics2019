@@ -142,7 +142,7 @@ uint32_t expr(char *e, bool *success) {
 
   /* TODO: Insert codes to evaluate the expression. */
   *success = true;
-  return eval(0, nr_token);
+  return eval(0, nr_token-1);
 }
 
 uint32_t eval(uint32_t p, uint32_t q) {
