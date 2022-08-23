@@ -5,7 +5,6 @@
  */
 #include <sys/types.h>
 #include <regex.h>
-#include <stdlib.h>
 
 enum {
   TK_NOTYPE = 256, 
@@ -103,11 +102,13 @@ static bool make_token(char *e) {
         case TK_REG:
           strncpy(reg_name, substr_start, substr_len);
           if(!strcmp(reg_name, "$pc")){
-            strcpy(tokens[nr_token].str, itoa(cpu.pc)); break;
+            sprintf(tokens[nr_token].str, "%d", cpu.pc); break;
+            // strcpy(tokens[nr_token].str, itoa(cpu.pc)); break;
           }
           for(int i=0;i<32;i++){
             if(!strcmp(reg_name, regsl[i])){
-              strcpy(tokens[nr_token].str, itoa(cpu.gpr[i]._32)); break;
+              sprintf(tokens[nr_token].str, "%d", cpu.gpr[i]._32); break;
+              // strcpy(tokens[nr_token].str, itoa(cpu.gpr[i]._32)); break;
             }
           }
           break;
