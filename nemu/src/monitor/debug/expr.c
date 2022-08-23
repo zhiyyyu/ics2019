@@ -215,8 +215,9 @@ uint32_t get_main_op(uint32_t p, uint32_t q){
     } else if(p_idx == 0 && is_op(tokens[i].type)){
       t_idx = i;
     }
-    // Log("t_idx %d i %d", t_idx, i);
+    Log("t_idx %d i %d", t_idx, i);
   }
+  Log("t_idx %d", t_idx);
   assert(t_idx > 0);
   return t_idx;
 }
