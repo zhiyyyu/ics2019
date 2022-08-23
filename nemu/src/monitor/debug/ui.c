@@ -67,11 +67,11 @@ static int cmd_p(char *args) {
 
 static int cmd_x(char *args) {
   uint32_t n = atoi(strtok(NULL, " "));
-  uint32_t* addr = (uint32_t*)atoi(strtok(NULL, " "));
-  printf("%d, %x", n, (unsigned int)addr);
-  // for(int i=0;i<n;i++){
-  //   printf("%x: 0x%x\n", (unsigned int)addr[i]);
-  // }
+  // 去掉开头的0x
+  paddr_t addr = (paddr_t)strtol(strtok(NULL, " ")+2, NULL, 16);
+  for(int i=0;i<n;i++){
+    printf("%x: 0x%x\n", paddr_read(addr, i));
+  }
   return 0;
 }
 
