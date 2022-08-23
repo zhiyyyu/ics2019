@@ -171,6 +171,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
     /* We should do more things here. */
     // the position of main op in the token expression
     uint32_t op = get_main_op(p, q);
+    Log("main op: %c", tokens[op].type);
     uint32_t val1 = eval(p, op - 1);
     uint32_t val2 = eval(op + 1, q);
     Log("expr: %d %c %d", val1, tokens[op].type, val2);
