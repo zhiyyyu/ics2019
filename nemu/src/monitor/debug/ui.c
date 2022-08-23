@@ -68,9 +68,10 @@ static int cmd_p(char *args) {
 static int cmd_x(char *args) {
   uint32_t n = atoi(strtok(NULL, " "));
   uint32_t* addr = (uint32_t*)atoi(strtok(NULL, " "));
-  for(int i=0;i<n;i++){
-    printf("%x: 0x%x\n", addr[i]);
-  }
+  printf("%d, %x", n, (unsigned int)addr);
+  // for(int i=0;i<n;i++){
+  //   printf("%x: 0x%x\n", (unsigned int)addr[i]);
+  // }
   return 0;
 }
 
