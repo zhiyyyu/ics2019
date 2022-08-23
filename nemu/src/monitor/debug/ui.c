@@ -70,7 +70,7 @@ static int cmd_x(char *args) {
   // 去掉开头的0x
   paddr_t addr = (paddr_t)strtol(strtok(NULL, " ")+2, NULL, 16);
   for(int i=0;i<n;i++){
-    printf("0x%x: 0x%x\n", addr+i, paddr_read(addr, i));
+    Log("0x%x: 0x%x\n", addr+i, paddr_read(addr, i));
   }
   return 0;
 }
