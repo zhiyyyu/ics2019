@@ -37,7 +37,7 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-  printf("%s", args[0]);
+  printf("%d", args[0]);
   return 0;
 }
 
