@@ -37,7 +37,12 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-  printf("%s\n", args);
+	int n;
+  if(strlen(args) < 1) n = 1;
+	n = atoi(args);
+	for(int i=0;i<n;i++){
+		cpu_exec(-1);
+	}
   return 0;
 }
 
