@@ -50,9 +50,12 @@ static int cmd_si(char *args) {
 static int cmd_info(char *args) {
 	// isa/riscv32/reg.c: isa_reg_display
 	if(strcmp(args, "r")){
+		printf("info r");
 		isa_reg_display();
 	} else if(strcmp(args, "w")){
-		
+		printf("info r");
+	} else{
+		TODO();
 	}
   return 0;
 }
