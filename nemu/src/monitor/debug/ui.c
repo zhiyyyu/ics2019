@@ -36,6 +36,11 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+static int cmd_si(char *args) {
+  printf("%s", args[0]);
+  return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -46,6 +51,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+  { "si [N]", "Execute N step", cmd_si },
 
   /* TODO: Add more commands */
 
@@ -86,6 +92,7 @@ void ui_mainloop(int is_batch_mode) {
     char *str_end = str + strlen(str);
 
     /* extract the first token as the command */
+    // 按空格划分指令
     char *cmd = strtok(str, " ");
     if (cmd == NULL) { continue; }
 
