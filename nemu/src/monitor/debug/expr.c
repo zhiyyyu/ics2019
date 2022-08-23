@@ -157,7 +157,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-    Log("single token: %s", tokens[p].str);
+    Log("single token: 0X%x", atoi(tokens[p].str));
     return atoi(tokens[p].str);
   }
   else if (check_parentheses(p, q) == true) {
