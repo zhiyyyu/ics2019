@@ -8,9 +8,9 @@ const char *regsl[] = {
 };
 
 void isa_reg_display() {
-  printf("%s\t%d", "pc", cpu.pc);
+  printf("%s\t%d\n", "pc", cpu.pc);
   for(int i=0;i<32;i++){
-    printf("%s\t%d", regsl[i], cpu.gpr[i]._32);
+    printf("%s\t%d\n", regsl[i], cpu.gpr[i]._32);
   }
 }
 
