@@ -53,7 +53,7 @@ static int cmd_info(char *args) {
 		printf("info r\n");
 		isa_reg_display();
 	} else if(strcmp(args, "w")){
-		printf("info r\n");
+		printf("info w\n");
 	} else{
 		TODO();
 	}
