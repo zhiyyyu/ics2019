@@ -31,11 +31,11 @@ static struct rule {
   {"\\*", '*'},               // mul
   {"/", '/'},                 // div
   {"==", TK_EQ},              // equal
-  {"\\(", '('},                 // left
-  {"\\)", ')'},                 // right
+  {"\\(", '('},               // left
+  {"\\)", ')'},               // right
   {"[1-9][0-9]*", TK_NUM},    // number
   {"0(X|x)[0-9]*", TK_HEX},   // hex
-  {"($0|ra|(s|g|t)p|t[0-6]|s[0-11]|a[0-7])", TK_REG},    // register
+  {"($(0|pc)|ra|(s|g|t)p|t[0-6]|s[0-11]|a[0-7])", TK_REG},    // register
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -114,7 +114,6 @@ static bool make_token(char *e) {
         default: break;
         }
         tokens[nr_token++].type = rules[i].token_type;
-
         break;
       }
     }
@@ -146,7 +145,7 @@ uint32_t expr(char *e, bool *success) {
 }
 
 uint32_t eval(uint32_t p, uint32_t q) {
-  Log("eval(%d, %d)", p, q);
+  // Log("eval(%d, %d)", p, q);
   if (p > q) {
     /* Bad expression */
     panic("bad experssion");
@@ -157,8 +156,14 @@ uint32_t eval(uint32_t p, uint32_t q) {
      * Return the value of the number.
      */
     uint32_t val;
-    if(tokens[p].type == TK_HEX) val = strtol(tokens[p].str+2, NULL, 16);
-    else if(tokens[p].type == TK_NUM) val = atoi(tokens[p].str);
+    switch (tokens[p].type){
+    case TK_HEX:
+      val = strtol(tokens[p].str+2, NULL, 16); break;
+    case TK_NUM: case TK_REG:
+      val = atoi(tokens[p].str); break;
+    default:
+      TODO(); break;
+    }
     // Log("single token: 0X%x", val);
     return val;
   }

@@ -72,7 +72,7 @@ static int cmd_x(char *args) {
   bool success = false;
   char *exp = strtok(NULL, " ");
   paddr_t addr = expr(exp, &success);
-  Log("expr: 0X%x", addr);
+  // Log("expr: 0X%x", addr);
   if(!success) return -1;
   for(int i=0;i<n;i++){
     Log("0x%x: 0x%x\n", addr+i, paddr_read(addr, i));
