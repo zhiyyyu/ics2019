@@ -218,7 +218,7 @@ bool check_parentheses(uint32_t p, uint32_t q){
 uint32_t get_main_op(uint32_t p, uint32_t q){
   int p_idx = 0, t_idx = -1;
   for(int i=q;i>=(int)p;i--){
-    // Log("t_idx %d i %d\n", t_idx, i);
+    Log("t_idx %d i %d\n", t_idx, i);
     if(tokens[i].type == ')'){
       p_idx++;
     } else if(tokens[i].type == '('){
