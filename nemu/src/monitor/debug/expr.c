@@ -162,10 +162,11 @@ uint32_t eval(uint32_t p, uint32_t q) {
     Log("single token: 0X%x", val);
     return val;
   }
-  else if (check_parentheses(p, q) == true) {
+  else if (check_parentheses(p, q)) {
     /* The expression is surrounded by a matched pair of parentheses.
      * If that is the case, just throw away the parentheses.
      */
+    Log("(...)");
     return eval(p + 1, q - 1);
   }
   else {
@@ -216,6 +217,7 @@ uint32_t get_main_op(uint32_t p, uint32_t q){
     }
   }
   assert(t_idx > 0);
+  Log("main op: %c", tokens[t_idx].type);
   return t_idx;
 }
 
