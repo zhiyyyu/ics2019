@@ -38,8 +38,8 @@ static int cmd_q(char *args) {
 
 static int cmd_si(char *args) {
 	int n = 1;
-	printf("%s\n", args);
-  if(strlen(args) > 0) n = atoi(args);
+	printf("%d %s\n", strlen(args), args);
+  // if(strlen(args) > 0) n = atoi(args);
 	// for(int i=0;i<n;i++){
 	// 	cpu_exec(-1);
 	// }
