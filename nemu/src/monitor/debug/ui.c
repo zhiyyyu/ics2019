@@ -68,7 +68,10 @@ static int cmd_p(char *args) {
 static int cmd_x(char *args) {
   uint32_t n = atoi(strtok(NULL, " "));
   // 去掉开头的0x
-  paddr_t addr = (paddr_t)strtol(strtok(NULL, " ")+2, NULL, 16);
+  // paddr_t addr = strtol(strtok(NULL, " ")+2, NULL, 16);
+  bool success = false;
+  paddr_t addr = expr(strtok(NULL, " "), &success);
+  if(!success) return -1;
   for(int i=0;i<n;i++){
     Log("0x%x: 0x%x\n", addr+i, paddr_read(addr, i));
   }
