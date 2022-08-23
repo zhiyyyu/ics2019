@@ -74,6 +74,7 @@ static bool make_token(char *e) {
   int i;
   regmatch_t pmatch;
   char reg_name[32];
+  bool success;
 
   nr_token = 0;
 
@@ -99,17 +100,10 @@ static bool make_token(char *e) {
         case TK_NUM: case TK_HEX:
           strncpy(tokens[nr_token].str, substr_start, substr_len); break;
         case TK_REG:
+          success = false;
           strncpy(reg_name, substr_start, substr_len);
-          if(!strcmp(reg_name, "$pc")){
-            sprintf(tokens[nr_token].str, "%d", cpu.pc); break;
-            // strcpy(tokens[nr_token].str, itoa(cpu.pc)); break;
-          }
-          for(int i=0;i<32;i++){
-            if(!strcmp(reg_name, regsl[i])){
-              sprintf(tokens[nr_token].str, "%d", cpu.gpr[i]._32); break;
-              // strcpy(tokens[nr_token].str, itoa(cpu.gpr[i]._32)); break;
-            }
-          }
+          sprintf(tokens[nr_token].str, "%d", isa_reg_str2val(reg_name, &success));
+          assert(success);
           break;
         default: break;
         }
@@ -145,7 +139,7 @@ uint32_t expr(char *e, bool *success) {
 }
 
 int32_t eval(int32_t p, int32_t q) {
-  Log("eval(%d, %d)", p, q);
+  // Log("eval(%d, %d)", p, q);
   if (p > q) {
     /* Bad expression */
     // panic("bad experssion");
@@ -227,7 +221,6 @@ int32_t get_main_op(int32_t p, int32_t q){
     }
     // Log("t_idx %d i %d\n", t_idx, i);
   }
-  Log("t_idx %d\n", t_idx);
   assert(t_idx >= 0);
   return t_idx;
 }
