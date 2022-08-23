@@ -49,8 +49,11 @@ static int cmd_si(char *args) {
 
 static int cmd_info(char *args) {
 	// isa/riscv32/reg.c: isa_reg_display
-	isa_reg_display();
-	printf("%s", args);
+	if(strcmp(args, "r")){
+		isa_reg_display();
+	} else if(strcmp(args, "w")){
+		
+	}
   return 0;
 }
 
@@ -126,13 +129,14 @@ void ui_mainloop(int is_batch_mode) {
     char *str_end = str + strlen(str);
 
     /* extract the first token as the command */
-    // 按空格划分指令
+    // 按空格划分指令，每调用一次分割一次
     char *cmd = strtok(str, " ");
     if (cmd == NULL) { continue; }
 
     /* treat the remaining string as the arguments,
      * which may need further parsing
      */
+		// info ...：分割成info和...
     char *args = cmd + strlen(cmd) + 1;
     if (args >= str_end) {
       args = NULL;
