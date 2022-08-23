@@ -141,7 +141,7 @@ uint32_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  Log("make token: success.");
+  // Log("make token: success.");
   *success = true;
   return eval(0, nr_token-1);
 }
@@ -156,6 +156,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
      * For now this token should be a number.
      * Return the value of the number.
      */
+    Log("single token: %s", tokens[p].str);
     return atoi(tokens[p].str);
   }
   else if (check_parentheses(p, q) == true) {
