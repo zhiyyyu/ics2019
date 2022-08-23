@@ -140,7 +140,7 @@ uint32_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  // Log("make token: success.");
+  Log("make token: success.");
   *success = true;
   return eval(0, nr_token-1);
 }
@@ -173,6 +173,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
     uint32_t op = get_main_op(p, q);
     uint32_t val1 = eval(p, op - 1);
     uint32_t val2 = eval(op + 1, q);
+    Log("expr: %d %c %d", val1, tokens[op].type, val2);
 
     switch (tokens[op].type) {
       case '+': return val1 + val2; break;
