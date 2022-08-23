@@ -188,7 +188,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
       case '-': return val1 - val2; break;
       case '*': return val1 * val2; break;
       case '/': return val1 / val2; break;
-      case TK_DEREF: return *(uint32_t*)val2;
+      case TK_DEREF: return paddr_read(val2, 4);
       default: assert(0);
     }
   }
