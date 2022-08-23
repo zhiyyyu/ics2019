@@ -71,8 +71,8 @@ static int cmd_x(char *args) {
   // paddr_t addr = strtol(strtok(NULL, " ")+2, NULL, 16);
   bool success = false;
   char *exp = strtok(NULL, " ");
-  // Log("expr: %s", exp);
   paddr_t addr = expr(exp, &success);
+  Log("expr: 0X%x", addr);
   if(!success) return -1;
   for(int i=0;i<n;i++){
     Log("0x%x: 0x%x\n", addr+i, paddr_read(addr, i));
