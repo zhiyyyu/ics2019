@@ -187,7 +187,7 @@ uint32_t eval(uint32_t p, uint32_t q) {
       case '+': return val1 + val2;
       case '-': return val1 - val2;
       case '*': 
-        if(op == 0 || op > 0 && is_op(tokens[op-1].str)){
+        if(op == 0 || op > 0 && is_op(tokens[op-1].type)){
           return paddr_read(val2, 4);
         }
         return val1 * val2;
