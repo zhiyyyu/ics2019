@@ -27,7 +27,10 @@ static OpcodeEntry opcode_table [32] = {
 };
 
 void isa_exec(vaddr_t *pc) {
+  // 取指
   decinfo.isa.instr.val = instr_fetch(pc, 4);
   assert(decinfo.isa.instr.opcode1_0 == 0x3);
+  
+  // 译码、执行
   idex(pc, &opcode_table[decinfo.isa.instr.opcode6_2]);
 }

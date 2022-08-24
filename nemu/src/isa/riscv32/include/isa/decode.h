@@ -1,6 +1,9 @@
 #ifndef __RISCV32_DECODE_H__
 #define __RISCV32_DECODE_H__
 
+#include "cpu/decode.h"
+#include "nemu.h"
+
 typedef union {
   struct {
     uint32_t opcode1_0 : 2;
