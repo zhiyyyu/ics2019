@@ -90,7 +90,6 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_w(char *args) {
-  Log("watch point [%s] is added.", args);
   WP* wp = new_wp();
   strcpy(wp->expr, args);
   bool success = false;
