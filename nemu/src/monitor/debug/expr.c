@@ -182,7 +182,7 @@ int32_t eval(int32_t p, int32_t q) {
       case '+': return val1 + val2;
       case '-': return val1 - val2;
       case '*': 
-        if(op == 0 || is_op(tokens[op-1].type) || is_defer(op)){
+        if(op == 0 || is_defer(op)){
           return paddr_read(val2, 4);
         }
         return val1 * val2;
@@ -237,6 +237,6 @@ inline bool is_op(int type){
 }
 
 inline bool is_defer(int i){
-    return i == 0 || is_op(tokens[i-1].type) 
-      || tokens[i-1].type == '(';
+    return tokens[i].type == '*' && (i == 0 || is_op(tokens[i-1].type) 
+      || tokens[i-1].type == '(');
 }
