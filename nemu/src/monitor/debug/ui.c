@@ -47,6 +47,8 @@ static int cmd_si(char *args) {
   return 0;
 }
 
+extern WP* head;
+
 static int cmd_info(char *args) {
 	// isa/riscv32/reg.c: isa_reg_display
 	if(!strcmp(args, "r")){
@@ -54,7 +56,11 @@ static int cmd_info(char *args) {
 		isa_reg_display();
 	} else if(!strcmp(args, "w")){
 		// printf("info w\n");
-        TODO();
+    WP* p = head;
+    while(p){
+      Log("watch point [%s]: val %x.", p->expr, p->val);
+      p = p->next;
+    }
 	} else{
 		TODO();
 	}
@@ -86,6 +92,14 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_w(char *args) {
+  WP* wp = new_wp();
+  strcpy(wp->expr, args);
+  bool success = false;
+  wp->val = expr(args, &success);
+  if(!success){
+    Log("bad expr."); free_wp(wp);
+  }
+  Log("watch point [%s] is added.");
   return 0;
 }
 
