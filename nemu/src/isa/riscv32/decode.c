@@ -59,7 +59,7 @@ make_DHelper(I) {
   decode_op_r(id_dest, decinfo.isa.instr.rd, true);
 
   print_Dop(id_src->str, OP_STR_SIZE, "%s", reg_name(id_src->reg, 4));
-  print_Dop(id_src2->str, OP_STR_SIZE, "%x", id_src2->val);
+  print_Dop(id_src2->str, OP_STR_SIZE, "%d", id_src2->val);
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
 }
 
