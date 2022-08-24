@@ -101,7 +101,7 @@ static bool make_token(char *e) {
           strncpy(tokens[nr_token].str, substr_start, substr_len); break;
         case TK_REG:
           success = false;
-          strncpy(reg_name, substr_start, substr_len);
+          strncpy(reg_name, substr_start, substr_len+1);
           sprintf(tokens[nr_token].str, "%d", isa_reg_str2val(reg_name, &success));
           assert(success);
           break;
