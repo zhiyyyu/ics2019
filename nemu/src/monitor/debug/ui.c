@@ -102,6 +102,7 @@ static int cmd_w(char *args) {
 }
 
 static int cmd_d(char *args) {
+  
   return 0;
 }
 
