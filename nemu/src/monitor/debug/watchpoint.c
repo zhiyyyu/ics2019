@@ -49,3 +49,7 @@ void free_wp(WP* wp){
     p = p->next;
   }
 }
+
+WP* get_wp_head(){
+  return head;
+}

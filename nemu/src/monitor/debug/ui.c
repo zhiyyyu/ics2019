@@ -47,8 +47,6 @@ static int cmd_si(char *args) {
   return 0;
 }
 
-extern WP* head;
-
 static int cmd_info(char *args) {
 	// isa/riscv32/reg.c: isa_reg_display
 	if(!strcmp(args, "r")){
@@ -56,7 +54,7 @@ static int cmd_info(char *args) {
 		isa_reg_display();
 	} else if(!strcmp(args, "w")){
 		// printf("info w\n");
-    WP* p = head;
+    WP* p = get_wp_head();
     while(p){
       Log("watch point [%s]: val %x.", p->expr, p->val);
       p = p->next;

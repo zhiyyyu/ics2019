@@ -24,7 +24,6 @@ void asm_print(vaddr_t ori_pc, int instr_len, bool print_flag);
 void log_clearbuf(void);
 
 static uint64_t g_nr_guest_instr = 0;
-extern WP* head;
 
 void monitor_statistic(void) {
   Log("total guest instructions = %ld", g_nr_guest_instr);
@@ -62,7 +61,7 @@ void cpu_exec(uint64_t n) {
   log_clearbuf();
 
   /* TODO: check watchpoints here. */
-  WP* p = head;
+  WP* p = get_wp_head();
   while(p){
     bool success = false;
     uint32_t val = expr(p->expr, &success);
