@@ -63,12 +63,10 @@ make_DHelper(I) {
 
 make_DHelper(jal) {
   decode_op_r(id_dest, decinfo.isa.instr.rd, true);
-  int32_t simm = decinfo.isa.instr.imm10_1 |
-                (decinfo.isa.instr.imm11_ << 10) | 
-                (decinfo.isa.instr.imm19_12 << 11) |
-                (decinfo.isa.instr.simm20 << 19);
-  Log("%x %x %x %x", decinfo.isa.instr.imm10_1, decinfo.isa.instr.imm11_, decinfo.isa.instr.imm19_12, decinfo.isa.instr.simm20);
-  Log("jal simm: %x", simm);
+  int32_t simm = (decinfo.isa.instr.imm10_1 << 1) |
+                (decinfo.isa.instr.imm11_ << 11) | 
+                (decinfo.isa.instr.imm19_12 << 12) |
+                (decinfo.isa.instr.simm20 << 20);
   decode_op_i(id_src, simm, true);
 
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
