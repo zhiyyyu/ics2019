@@ -232,5 +232,6 @@ inline bool is_op(int type){
 }
 
 inline bool is_defer(int i){
-    return i == 0 || is_op(tokens[i-1].type);
+    return i == 0 || is_op(tokens[i-1].type) 
+      || tokens[i-1].type == '(' || tokens[i-1].type == ')';
 }
