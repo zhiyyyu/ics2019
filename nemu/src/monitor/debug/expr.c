@@ -222,11 +222,10 @@ int32_t get_main_op(int32_t p, int32_t q){
           op != '+' && op != '-' || 
           (tokens[i].type == '+' || tokens[i].type == '-')){
         op = tokens[i].type;
+        t_idx = i;
       }
-      t_idx = i;
-    } else{
-
     }
+    Log("op: %c", op);
     // Log("t_idx %d i %d\n", t_idx, i);
   }
   Log("t_idx %d", t_idx);
