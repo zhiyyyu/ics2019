@@ -8,7 +8,7 @@
 
 enum {
   TK_NOTYPE = 256, 
-  TK_EQ, TK_NEQ,
+  TK_EQ, TK_NEQ, TK_GT, TK_LT, TK_NGT, TK_NLT,
   TK_REG,
   TK_NUM, TK_HEX,
   TK_DEREF,
@@ -31,6 +31,11 @@ static struct rule {
   {"\\*", '*'},               // mul
   {"/", '/'},                 // div
   {"==", TK_EQ},              // equal
+  {"!=", TK_NEQ},             // not equal
+  {">", TK_GT},               // greater than
+  {"<", TK_LT},               // less than
+  {">=", TK_NLT},             // not less than
+  {"<=", TK_NGT},             // not geater than
   {"\\(", '('},               // left
   {"\\)", ')'},               // right
   {"[1-9][0-9]*", TK_NUM},    // number
@@ -187,6 +192,12 @@ int32_t eval(int32_t p, int32_t q) {
         }
         return val1 * val2;
       case '/': return val1 / val2;
+      case TK_EQ: return val1 == val2;
+      case TK_NEQ: return val1 != val2;
+      case TK_GT: return val1 > val2;
+      case TK_LT: return val1 < val2;
+      case TK_NGT: return val1 <= val2;
+      case TK_NLT: return val1 >= val2;
       // case TK_DEREF: return paddr_read(val2, 4);
       default: assert(0);
     }
