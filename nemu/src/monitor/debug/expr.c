@@ -211,19 +211,25 @@ bool check_parentheses(int32_t p, int32_t q){
 }
 
 int32_t get_main_op(int32_t p, int32_t q){
-  int p_idx = 0, t_idx = -1;
+  int p_idx = 0, t_idx = -1, op = -1;
   for(int i=q;i>=p;i--){
     if(tokens[i].type == ')'){
       p_idx++;
     } else if(tokens[i].type == '('){
       p_idx--;
-    } else if(p_idx == 0 && (is_op(tokens[i].type)
-        || tokens[i].type == '*' && is_defer(i))){
+    } else if(p_idx == 0 && is_op(tokens[i].type)){
+      if ((tokens[i].type == '*' || tokens[i].type == '/') && 
+          op != '+' && op != '-' || 
+          (tokens[i].type == '+' || tokens[i].type == '-')){
+        op = tokens[i].type;
+      }
       t_idx = i;
+    } else{
+
     }
     // Log("t_idx %d i %d\n", t_idx, i);
   }
-  Log("t_idx %d", t_idx);
+  // Log("t_idx %d", t_idx);
   assert(t_idx >= 0);
   return t_idx;
 }
