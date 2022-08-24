@@ -203,7 +203,7 @@ bool check_parentheses(int32_t p, int32_t q){
       idx++;
     } else if(tokens[i].type == ')'){
       idx--;
-      if(idx == 0) return false;
+      if(idx == 0 &&& i < q) return false;
     }
   }
   if(idx > 0) return false;
