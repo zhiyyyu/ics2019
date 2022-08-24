@@ -7,3 +7,4 @@ make_EHelper(jal) {
 
 	print_asm_template2(jal);
 }
+
