@@ -182,7 +182,7 @@ int32_t eval(int32_t p, int32_t q) {
       case '+': return val1 + val2;
       case '-': return val1 - val2;
       case '*': 
-        if(op == 0 || op > 0 && is_op(tokens[op-1].type)){
+        if(op == 0 || is_op(tokens[op-1].type) || is_defer(tokens[op-1].type)){
           return paddr_read(val2, 4);
         }
         return val1 * val2;
