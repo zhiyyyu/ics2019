@@ -140,7 +140,7 @@ uint32_t expr(char *e, bool *success) {
 }
 
 int32_t eval(int32_t p, int32_t q) {
-  // Log("eval(%d, %d)", p, q);
+  Log("eval(%d, %d)", p, q);
   if (p > q) {
     /* Bad expression */
     // panic("bad experssion");
@@ -227,6 +227,7 @@ int32_t get_main_op(int32_t p, int32_t q){
     }
     // Log("t_idx %d i %d op %c\n", t_idx, i. op);
   }
+  Log("main op: %c", op);
   assert(t_idx >= 0);
   return t_idx;
 }
