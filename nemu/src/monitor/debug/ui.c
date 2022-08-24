@@ -56,7 +56,7 @@ static int cmd_info(char *args) {
 		// printf("info w\n");
     WP* p = get_wp_head();
     while(p){
-      Log("watch point [%s]: val %x.", p->expr, p->val);
+      Log("watch point %d [%s]: val %x.", p->NO, p->expr, p->val);
       p = p->next;
     }
 	} else{
@@ -102,7 +102,16 @@ static int cmd_w(char *args) {
 }
 
 static int cmd_d(char *args) {
-  
+  int no = atoi(args);
+  WP* p = get_wp_head();
+  while(p){
+    if(p->NO == no){
+      free_wp(p);
+      break;
+    }
+    p = p->next;
+  }
+  Log("watch point %d has deleted.", no);
   return 0;
 }
 
