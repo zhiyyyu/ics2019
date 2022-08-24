@@ -223,6 +223,7 @@ int32_t get_main_op(int32_t p, int32_t q){
     }
     // Log("t_idx %d i %d\n", t_idx, i);
   }
+  Log("t_idx %d", t_idx);
   assert(t_idx >= 0);
   return t_idx;
 }
@@ -233,5 +234,5 @@ inline bool is_op(int type){
 
 inline bool is_defer(int i){
     return i == 0 || is_op(tokens[i-1].type) 
-      || tokens[i-1].type == '(' || tokens[i-1].type == ')';
+      || tokens[i-1].type == '(';
 }
