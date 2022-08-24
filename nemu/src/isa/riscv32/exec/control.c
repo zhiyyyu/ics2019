@@ -12,7 +12,7 @@ make_EHelper(jalr) {
 	rtl_addi(&s0, &cpu.pc, 4);
 	rtl_sr(id_dest->reg, &s0, 4);
 
-	rtl_addi(&s0, &id_src->reg, id_src2->val);
+	rtl_addi(&s0, &id_src->val, id_src2->val);
 	Log("s0 %x", s0);
 	s0 &= ~1;
 	rtl_j(s0);
