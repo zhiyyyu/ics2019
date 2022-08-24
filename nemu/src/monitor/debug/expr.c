@@ -225,10 +225,8 @@ int32_t get_main_op(int32_t p, int32_t q){
         t_idx = i;
       }
     }
-    Log("op: %c", op);
-    // Log("t_idx %d i %d\n", t_idx, i);
+    // Log("t_idx %d i %d op %c\n", t_idx, i. op);
   }
-  Log("t_idx %d", t_idx);
   assert(t_idx >= 0);
   return t_idx;
 }
