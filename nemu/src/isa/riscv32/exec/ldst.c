@@ -24,8 +24,8 @@ make_EHelper(st) {
 }
 
 make_EHelper(auipc) {
-  rtl_add(&s0, &id_src->val, pc-4);
-  rtl_sr(id_dest->reg, &s0, 4);
+  rtl_add(&id_dest->val, &id_src->val, &cpu.pc);
+  rtl_sr(id_dest->reg, &id_dest->val, 4);
 
   print_asm_template2(auipc);
 }
