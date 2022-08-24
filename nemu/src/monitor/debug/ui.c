@@ -90,6 +90,7 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_w(char *args) {
+  Log("watch point [%s] is added.", args);
   WP* wp = new_wp();
   strcpy(wp->expr, args);
   bool success = false;
@@ -97,7 +98,7 @@ static int cmd_w(char *args) {
   if(!success){
     Log("bad expr."); free_wp(wp);
   }
-  Log("watch point [%s] is added.");
+  Log("watch point [%s] is added.", args);
   return 0;
 }
 
