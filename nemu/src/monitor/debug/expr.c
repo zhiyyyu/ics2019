@@ -125,6 +125,7 @@ int32_t eval(int32_t p, int32_t q);
 bool check_parentheses(int32_t p, int32_t q);
 int32_t get_main_op(int32_t p, int32_t q);
 bool is_op(int type);
+bool is_defer(int i);
 
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
@@ -216,7 +217,8 @@ int32_t get_main_op(int32_t p, int32_t q){
       p_idx++;
     } else if(tokens[i].type == '('){
       p_idx--;
-    } else if(p_idx == 0 && is_op(tokens[i].type)){
+    } else if(p_idx == 0 && (is_op(tokens[i].type)
+        || tokens[i].type == '*' && is_defer(i))){
       t_idx = i;
     }
     // Log("t_idx %d i %d\n", t_idx, i);
@@ -227,4 +229,8 @@ int32_t get_main_op(int32_t p, int32_t q){
 
 inline bool is_op(int type){
   return type == '+' || type == '-' || type == '*' || type == '/';
+}
+
+inline bool is_defer(int i){
+    return i == 0 || is_op(tokens[i-1].type);
 }
