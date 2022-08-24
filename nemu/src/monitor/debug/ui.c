@@ -62,6 +62,11 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char *args) {
+  bool success = false;
+  char *exp = strtok(NULL, " ");
+  uint32_t val = expr(exp, &success);
+  if(!success) return -1;
+  Log("expr: 0X%x", val);
   return 0;
 }
 
