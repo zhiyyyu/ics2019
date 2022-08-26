@@ -56,7 +56,7 @@ static make_EHelper(or_rem) {
 }
 
 static OpcodeEntry r_table [8] = {
-  EX(add_sub_mul), EX(shl), EMPTY, EX(sltu), EX(xor_div), EMPTY, EX(or_rem), EX(and)
+  EX(add_sub_mul), EX(shl), EX(slt), EX(sltu), EX(xor_div), EMPTY, EX(or_rem), EX(and)
 };
 
 static make_EHelper(r_type) {
@@ -65,7 +65,7 @@ static make_EHelper(r_type) {
 }
 
 static OpcodeEntry i_table [8] = {
-  EX(addi), EX(shl), EX(slt), EX(sltiu), EX(xori), EX(sari), EMPTY, EX(andi)
+  EX(addi), EX(shl), EMPTY, EX(sltiu), EX(xori), EX(sari), EMPTY, EX(andi)
 };
 
 static make_EHelper(i_type) {
