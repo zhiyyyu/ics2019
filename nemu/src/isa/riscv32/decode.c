@@ -100,7 +100,7 @@ make_DHelper(B) {
                 (decinfo.isa.instr.imm10_5 << 5) |
                 (decinfo.isa.instr.imm11 << 11) |
                 (decinfo.isa.instr.simm12 << 12);
-  decode_op_i(id_dest, simm, false);
+  decode_op_i(id_dest, simm, true);
 
   print_Dop(id_src->str, OP_STR_SIZE, "%s", reg_name(id_src->reg, 4));
   print_Dop(id_src2->str, OP_STR_SIZE, "%s", reg_name(id_src2->reg, 4));

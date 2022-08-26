@@ -25,7 +25,7 @@ make_EHelper(jalr) {
 }
 
 #define make_EHelper_B(name, op) make_EHelper(name) { \
-  rtl_add(&s0, cpu.pc, &id_dest->val); \
+  rtl_add(&s0, &cpu.pc, &id_dest->val); \
 	rtl_jrelop(op, &id_src->val, &id_src2->val, s0); \
   print_asm_template3(name); \
 }
