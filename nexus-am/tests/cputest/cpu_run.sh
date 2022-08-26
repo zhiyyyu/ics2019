@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=unalign
+make run ARCH=riscv32-nemu ALL=wanshu
