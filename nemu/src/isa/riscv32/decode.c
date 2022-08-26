@@ -71,6 +71,7 @@ make_DHelper(J) {
                 (decinfo.isa.instr.imm11_ << 11) | 
                 (decinfo.isa.instr.imm19_12 << 12) |
                 (decinfo.isa.instr.simm20 << 20);
+  Log("j simm: %x %d", simm, simm);
   decode_op_i(id_src, simm, true);
   decode_op_r(id_dest, decinfo.isa.instr.rd, false);
 
