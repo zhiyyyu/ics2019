@@ -138,10 +138,10 @@ static inline void rtl_not(rtlreg_t *dest, const rtlreg_t* src1) {
 static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- signext(src1[(width * 8 - 1) .. 0])
   if(width == 4) return;
-  Log("sext before: %x %d", *dest, *dest);
+  // Log("sext before: %x %d", *dest, *dest);
   bool sign = (*dest >> (width * 8 - 1)) & 1;
   if(sign) *dest = *dest | (0xffffffff >> (width * 8) << (width * 8));
-  Log("sext after: %x %d", *dest, *dest);
+  // Log("sext after: %x %d", *dest, *dest);
 }
 
 static inline void rtl_setrelopi(uint32_t relop, rtlreg_t *dest,

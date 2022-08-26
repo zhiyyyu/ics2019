@@ -38,7 +38,7 @@ static make_EHelper(r_type) {
 }
 
 static OpcodeEntry i_table [8] = {
-  EX(addi), EX(shl), EMPTY, EX(sltiu), EMPTY, EX(sari), EMPTY, EX(andi)
+  EX(addi), EX(shl), EMPTY, EX(sltiu), EX(xori), EX(sari), EMPTY, EX(andi)
 };
 
 static make_EHelper(i_type) {
