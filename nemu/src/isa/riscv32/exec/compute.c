@@ -7,13 +7,13 @@ make_EHelper(lui) {
 }
 
 #define make_EHelper_I(name) make_EHelper(name) { \
-  concat(rtl, name) (&id_dest->val, &id_src->val, id_src2->val); \
+  concat(rtl_, name) (&id_dest->val, &id_src->val, id_src2->val); \
   rtl_sr(id_dest->reg, &id_dest->val, 4); \
   print_asm_template3(name); \
 }
 
 #define make_EHelper_R(name) make_EHelper(name) { \
-  concat(rtl, name) (&id_dest->val, &id_src->val, &id_src2->val); \
+  concat(interpret_rtl_, name) (&id_dest->val, &id_src->val, &id_src2->val); \
   rtl_sr(id_dest->reg, &id_dest->val, 4); \
   print_asm_template3(name); \
 }
@@ -28,3 +28,10 @@ make_EHelper(lui) {
 make_EHelper_I(addi);
 
 make_EHelper_R(add);
+
+// make_EHelper(add) {
+//   rtl_add(&id_dest->val, &id_src->val, &id_src2->val);
+//   rtl_sr(id_dest->reg, &id_dest->val, 4);
+
+//   print_asm_template3(addi);
+// }
