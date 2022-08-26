@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=mul-longlong
+make run ARCH=riscv32-nemu ALL=pascal
