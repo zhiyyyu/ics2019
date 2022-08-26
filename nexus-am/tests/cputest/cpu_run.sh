@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=add-longlong
+make run ARCH=riscv32-nemu ALL=bit
