@@ -20,7 +20,7 @@ static make_EHelper(store) {
 }
 
 static OpcodeEntry as_table [2] = {
-  EXW(add, 4), EXW(sub, 4)
+  EX(add), EX(sub)
 };
 
 static make_EHelper(add_sub) {
@@ -29,7 +29,7 @@ static make_EHelper(add_sub) {
 }
 
 static OpcodeEntry r_table [8] = {
-  EXW(add_sub, 4), EMPTY, EMPTY, EXW(sltu, 4), EXW(xor, 4), EMPTY, EXW(or, 4), EMPTY
+  EX(add_sub), EMPTY, EMPTY, EX(sltu), EX(xor), EMPTY, EX(or), EX(and)
 };
 
 static make_EHelper(r_type) {
@@ -38,7 +38,7 @@ static make_EHelper(r_type) {
 }
 
 static OpcodeEntry i_table [8] = {
-  EXW(addi, 4), EXW(shl, 4), EMPTY, EXW(sltiu, 4), EMPTY, EXW(sari, 4), EMPTY, EMPTY
+  EX(addi), EX(shl), EMPTY, EX(sltiu), EMPTY, EX(sari), EMPTY, EX(andi)
 };
 
 static make_EHelper(i_type) {
@@ -47,7 +47,7 @@ static make_EHelper(i_type) {
 }
 
 static OpcodeEntry b_table [8] = {
-  EXW(beq, 4), EXW(bne, 4), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+  EX(beq), EX(bne), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
 };
 
 static make_EHelper(b_type) {
