@@ -10,6 +10,9 @@ make_EHelper(sltiu);
 
 make_EHelper(add);
 make_EHelper(sub);
+make_EHelper(xor);
+make_EHelper(or);
+make_EHelper(sltu);
 
 make_EHelper(jal);
 make_EHelper(jalr);
