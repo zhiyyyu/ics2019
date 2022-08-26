@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=leap-year
+make run ARCH=riscv32-nemu ALL=load-store
