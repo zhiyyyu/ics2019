@@ -41,3 +41,4 @@ make_EHelper_R(mul_lo);
 
 make_EHelper_RE(sltiu, RELOP_LTU);
 make_EHelper_RE(sltu, RELOP_LTU);
+make_EHelper_RE(slt, RELOP_LT);

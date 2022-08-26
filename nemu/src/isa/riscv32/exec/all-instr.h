@@ -17,6 +17,7 @@ make_EHelper(sub);
 make_EHelper(xor);
 make_EHelper(or);
 make_EHelper(sltu);
+make_EHelper(slt);
 make_EHelper(shl);
 make_EHelper(and);
 make_EHelper(not);
@@ -31,6 +32,7 @@ make_EHelper(bne);
 make_EHelper(beq);
 make_EHelper(bge);
 make_EHelper(bgeu);
+make_EHelper(blt);
 
 make_EHelper(inv);
 make_EHelper(nemu_trap);

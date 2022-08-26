@@ -34,3 +34,4 @@ make_EHelper_B(bne, RELOP_NE);
 make_EHelper_B(beq, RELOP_EQ);
 make_EHelper_B(bge, RELOP_GE);
 make_EHelper_B(bgeu, RELOP_GEU);
+make_EHelper_B(blt, RELOP_LT);
