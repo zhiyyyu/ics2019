@@ -70,8 +70,8 @@ make_DHelper(J) {
   int32_t simm = (decinfo.isa.instr.imm10_1 << 1) |
                 (decinfo.isa.instr.imm11_ << 11) | 
                 (decinfo.isa.instr.imm19_12 << 12) |
-                (decinfo.isa.instr.simm20&1 << 20);
-  Log("j simm: %x %d", simm, simm);
+                (decinfo.isa.instr.simm20 << 20);
+  // Log("j simm: %x %d", simm, simm);
   // Log("10_1 %x, 11 %x, 19_12 %x, 20 %x", decinfo.isa.instr.imm10_1,
   // decinfo.isa.instr.imm11_,
   // decinfo.isa.instr.imm19_12,
