@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=to-lower-case
+make run ARCH=riscv32-nemu ALL=unalign
