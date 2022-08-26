@@ -39,7 +39,9 @@ char* strcat(char* dst, const char* src) {
 
 int strcmp(const char* s1, const char* s2) {
   char *p = s1, *q = s2;
-  while(p != '\0' && q != '\0' && *p == *q) p++, q++;
+  while(p != '\0' && q != '\0' && *p == *q){
+    p++; q++;
+  }
   if(p == '\0' && q == '\0') return 0;
   if(p == '\0') return -1;
   if(q == '\0') return 1;
