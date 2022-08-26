@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=bit
+make run ARCH=riscv32-nemu ALL=bubble-sort
