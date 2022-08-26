@@ -7,6 +7,8 @@ make_EHelper(st);
 
 make_EHelper(addi);
 
+make_EHelper(add);
+
 make_EHelper(jal);
 make_EHelper(jalr);
 
