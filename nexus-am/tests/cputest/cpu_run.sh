@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=select-sort
+make run ARCH=riscv32-nemu ALL=shift
