@@ -65,7 +65,7 @@ static make_EHelper(r_type) {
 }
 
 static OpcodeEntry ah_table [2] = {
-  EX(sari), EX(shri)
+  EX(shri), EX(sari)
 };
 
 static make_EHelper(sari_shri) {
