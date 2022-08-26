@@ -46,8 +46,17 @@ static make_EHelper(xor_div) {
   idex(pc, &dx_table[decinfo.isa.instr.funct7]);
 }
 
+static OpcodeEntry or_table [2] = {
+  EX(or), EX(div_r)
+};
+
+static make_EHelper(or_rem) {
+  decinfo.width = or_table[decinfo.isa.instr.funct7].width;
+  idex(pc, &or_table[decinfo.isa.instr.funct7]);
+}
+
 static OpcodeEntry r_table [8] = {
-  EX(add_sub_mul), EX(shl), EMPTY, EX(sltu), EX(xor_div), EMPTY, EX(or), EX(and)
+  EX(add_sub_mul), EX(shl), EMPTY, EX(sltu), EX(xor_div), EMPTY, EX(or_rem), EX(and)
 };
 
 static make_EHelper(r_type) {
