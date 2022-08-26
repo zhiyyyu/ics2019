@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=sum
+make run ARCH=riscv32-nemu ALL=switch
