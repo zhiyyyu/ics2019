@@ -5,13 +5,13 @@
 size_t strlen(const char *s) {
   char* p = s;
   size_t len = 0;
-  while(p != '\0') p++, len++;
+  while(*p != '\0') p++, len++;
   return len;
 }
 
 char *strcpy(char* dst,const char* src) {
   char *p = dst, *q = src;
-  while(q != '\0'){
+  while(*q != '\0'){
     *p++ = *q++;
   }
   *p = *q;
@@ -20,7 +20,7 @@ char *strcpy(char* dst,const char* src) {
 
 char* strncpy(char* dst, const char* src, size_t n) {
   char *p = dst, *q = src;
-  while(q != '\0' && n > 0){
+  while(*q != '\0' && n > 0){
     *p++ = *q++; n--;
   }
   if(n > 0) *p = *q;
@@ -29,8 +29,8 @@ char* strncpy(char* dst, const char* src, size_t n) {
 
 char* strcat(char* dst, const char* src) {
   char *p = dst, *q = src;
-  while(p != '\0') p++;
-  while(q != '\0'){
+  while(*p != '\0') p++;
+  while(*q != '\0'){
     *p = *q; p++; q++;
   }
   *p = *q;
@@ -39,22 +39,22 @@ char* strcat(char* dst, const char* src) {
 
 int strcmp(const char* s1, const char* s2) {
   char *p = s1, *q = s2;
-  while(p && q && p != '\0' && q != '\0' && (*p) == (*q)){
+  while(*p != '\0' && *q != '\0' && *p == *q){
     p++; q++;
   }
-  if(p == '\0' && q == '\0') return 0;
-  if(p == '\0') return -1;
-  if(q == '\0') return 1;
+  if(*p == '\0' && *q == '\0') return 0;
+  if(*p == '\0') return -1;
+  if(*q == '\0') return 1;
   return *p < *q ? -1 : 1;
 }
 
 int strncmp(const char* s1, const char* s2, size_t n) {
   char *p = s1, *q = s2;
-  while(p != '\0' && q != '\0' && *p == *q && n > 0) p++, q++, n--;
+  while(*p != '\0' && *q != '\0' && *p == *q && n > 0) p++, q++, n--;
   if(n > 0) return *p < *q ? -1 : 1;
-  if(p == '\0' && q == '\0') return 0;
-  if(p == '\0') return -1;
-  if(q == '\0') return 1;
+  if(*p == '\0' && *q == '\0') return 0;
+  if(*p == '\0') return -1;
+  if(*q == '\0') return 1;
   return *p < *q ? -1 : 1;
 }
 
