@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=load-store
+make run ARCH=riscv32-nemu ALL=matrix-mul
