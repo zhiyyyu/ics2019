@@ -23,7 +23,7 @@ static OpcodeEntry as_table [7] = {
   EX(add), EX(mul_lo), EMPTY, EMPTY, EMPTY, EMPTY, EX(sub), EMPTY
 };
 
-static inline lowbit(uint32_t x){
+static inline uint32_t lowbit(int32_t x){
   return x & (-x);
 }
 
