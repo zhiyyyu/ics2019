@@ -25,13 +25,13 @@ make_EHelper(lui) {
 }
 
 make_EHelper_I(addi);
-make_EHelper_R(sari);
+make_EHelper_I(sari); // srai
 
 make_EHelper_R(add);
 make_EHelper_R(sub);
 make_EHelper_R(xor);
 make_EHelper_R(or);
-make_EHelper_R(sll);
+make_EHelper_R(shl);  // sll
 
 make_EHelper_RE(sltiu, RELOP_LTU);
 make_EHelper_RE(sltu, RELOP_LTU);
