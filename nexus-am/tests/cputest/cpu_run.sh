@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=shift
+make run ARCH=riscv32-nemu ALL=shuixianhua
