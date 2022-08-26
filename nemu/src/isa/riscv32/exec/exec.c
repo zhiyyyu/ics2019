@@ -32,7 +32,7 @@ static inline uint32_t lowbit(uint32_t x){
 }
 
 static make_EHelper(add_sub_mul) {
-  Log("add_sub_mul: %x %d", decinfo.isa.instr.funct7, lowbit(decinfo.isa.instr.funct7));
+  // Log("add_sub_mul: %x %d", decinfo.isa.instr.funct7, lowbit(decinfo.isa.instr.funct7));
   decinfo.width = as_table[lowbit(decinfo.isa.instr.funct7)].width;
   idex(pc, &as_table[lowbit(decinfo.isa.instr.funct7)]);
 }
