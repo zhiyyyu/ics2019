@@ -3,6 +3,7 @@
 make_EHelper(jal) {
 	rtl_addi(&s0, &cpu.pc, 4);
 	rtl_sr(id_dest->reg, &s0, 4);
+  Log("id_src: %x %d", id_src->val);
 	rtl_addi(&s0, &cpu.pc, id_src->val);
 	rtl_j(s0);
 	print_asm_template2(jal);
