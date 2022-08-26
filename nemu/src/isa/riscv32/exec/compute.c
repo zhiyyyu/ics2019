@@ -37,6 +37,8 @@ make_EHelper_R(xor);
 make_EHelper_R(or);
 make_EHelper_R(and);
 make_EHelper_R(shl);  // sll
+make_EHelper_R(sar);  // sra
+make_EHelper_R(shr);  // srl
 make_EHelper_R(div_q);
 make_EHelper_R(div_r);
 make_EHelper_R(mul_lo);

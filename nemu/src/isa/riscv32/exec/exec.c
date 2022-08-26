@@ -73,8 +73,17 @@ static make_EHelper(sltu_mulh) {
   idex(pc, &si_table[decinfo.isa.instr.funct7]);
 }
 
+static OpcodeEntry ah_table [2] = {
+  EX(shr), EX(sar)
+};
+
+static make_EHelper(sra_srl) {
+  decinfo.width = ah_table[decinfo.isa.instr.funct7 >> 5].width;
+  idex(pc, &ah_table[decinfo.isa.instr.funct7 >> 5]);
+}
+
 static OpcodeEntry r_table [8] = {
-  EX(add_sub_mul), EX(sltu_mulh), EX(slt), EX(sltu_mulhu), EX(xor_div), EMPTY, EX(or_rem), EX(and)
+  EX(add_sub_mul), EX(sltu_mulh), EX(slt), EX(sltu_mulhu), EX(xor_div), EX(sra_srl), EX(or_rem), EX(and)
 };
 
 static make_EHelper(r_type) {
@@ -82,13 +91,13 @@ static make_EHelper(r_type) {
   idex(pc, &r_table[decinfo.isa.instr.funct3]);
 }
 
-static OpcodeEntry ah_table [2] = {
+static OpcodeEntry ahi_table [2] = {
   EX(shri), EX(sari)
 };
 
 static make_EHelper(sari_shri) {
-  decinfo.width = ah_table[decinfo.isa.instr.funct7 >> 5].width;
-  idex(pc, &ah_table[decinfo.isa.instr.funct7 >> 5]);
+  decinfo.width = ahi_table[decinfo.isa.instr.funct7 >> 5].width;
+  idex(pc, &ahi_table[decinfo.isa.instr.funct7 >> 5]);
 }
 
 static OpcodeEntry i_table [8] = {
