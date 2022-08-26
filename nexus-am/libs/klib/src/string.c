@@ -39,7 +39,7 @@ char* strcat(char* dst, const char* src) {
 
 int strcmp(const char* s1, const char* s2) {
   char *p = s1, *q = s2;
-  while(p != '\0' && q != '\0' && *p == *q) s1++, s2++;
+  while(p != '\0' && q != '\0' && *p == *q) p++, q++;
   if(p == '\0' && q == '\0') return 0;
   if(p == '\0') return -1;
   if(q == '\0') return 1;
@@ -48,7 +48,7 @@ int strcmp(const char* s1, const char* s2) {
 
 int strncmp(const char* s1, const char* s2, size_t n) {
   char *p = s1, *q = s2;
-  while(p != '\0' && q != '\0' && *p == *q && n > 0) s1++, s2++, n--;
+  while(p != '\0' && q != '\0' && *p == *q && n > 0) p++, q++, n--;
   if(n > 0) return *p < *q ? -1 : 1;
   if(p == '\0' && q == '\0') return 0;
   if(p == '\0') return -1;
