@@ -61,7 +61,7 @@ make_DHelper(I) {
   decode_op_i(id_src2, decinfo.isa.instr.simm11_0, true);
   decode_op_r(id_dest, decinfo.isa.instr.rd, true);
 
-  print_Dop(id_src->str, OP_STR_SIZE, "%s", reg_name(id_src->reg, 4));
+  print_Dop(id_src->str, OP_STR_SIZE, "%s(%d)", reg_name(id_src->reg, 4), id_src->reg);
   print_Dop(id_src2->str, OP_STR_SIZE, "%d", id_src2->val);
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
 }
@@ -79,7 +79,7 @@ make_DHelper(J) {
   decode_op_i(id_src, simm, true);
   decode_op_r(id_dest, decinfo.isa.instr.rd, false);
 
-  print_Dop(id_src->str, OP_STR_SIZE, "0x%x(%d)", id_src->val, id_src->val);
+  print_Dop(id_src->str, OP_STR_SIZE, "%x(%d)", id_src->val, id_src->val);
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
 }
 
@@ -88,8 +88,8 @@ make_DHelper(R){
   decode_op_r(id_src2, decinfo.isa.instr.rs2, true);
   decode_op_r(id_dest, decinfo.isa.instr.rd, false);
 
-  print_Dop(id_src->str, OP_STR_SIZE, "%s", reg_name(id_src->reg, 4));
-  print_Dop(id_src2->str, OP_STR_SIZE, "%s", reg_name(id_src2->reg, 4));
+  print_Dop(id_src->str, OP_STR_SIZE, "%s(%d)", reg_name(id_src->reg, 4), id_src->reg);
+  print_Dop(id_src2->str, OP_STR_SIZE, "%s(%d)", reg_name(id_src2->reg, 4), id_src->reg);
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
 }
 
@@ -102,7 +102,7 @@ make_DHelper(B) {
                 (decinfo.isa.instr.simm12 << 12);
   decode_op_i(id_dest, simm, true);
 
-  print_Dop(id_src->str, OP_STR_SIZE, "%s", reg_name(id_src->reg, 4));
-  print_Dop(id_src2->str, OP_STR_SIZE, "%s", reg_name(id_src2->reg, 4));
+  print_Dop(id_src->str, OP_STR_SIZE, "%s(%d)", reg_name(id_src->reg, 4), id_src->reg);
+  print_Dop(id_src2->str, OP_STR_SIZE, "%s(%d)", reg_name(id_src2->reg, 4), id_src->reg);
   print_Dop(id_dest->str, OP_STR_SIZE, "0x%x", id_dest->val);
 }
