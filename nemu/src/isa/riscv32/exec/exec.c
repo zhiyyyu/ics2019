@@ -20,7 +20,7 @@ static make_EHelper(store) {
 }
 
 static OpcodeEntry as_table [2] = {
-  EXW(add, 4), EXW(add, 4)
+  EXW(add, 4), EXW(sub, 4)
 };
 
 static make_EHelper(add_sub) {
