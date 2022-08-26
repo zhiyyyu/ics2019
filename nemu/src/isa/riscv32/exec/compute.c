@@ -40,6 +40,7 @@ make_EHelper_R(shl);  // sll
 make_EHelper_R(div_q);
 make_EHelper_R(div_r);
 make_EHelper_R(mul_lo);
+make_EHelper_R(mul_hi);
 
 make_EHelper_RE(sltiu, RELOP_LTU);
 make_EHelper_RE(sltu, RELOP_LTU);
