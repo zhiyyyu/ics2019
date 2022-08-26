@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=mov-c
+make run ARCH=riscv32-nemu ALL=movsx
