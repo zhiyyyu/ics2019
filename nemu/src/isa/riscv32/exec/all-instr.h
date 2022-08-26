@@ -38,7 +38,8 @@ make_EHelper(bne);
 make_EHelper(beq);
 make_EHelper(bge);
 make_EHelper(bgeu);
-make_EHelper(blt);
+make_EHelper(blt);;
+make_EHelper(bltu);
 
 make_EHelper(inv);
 make_EHelper(nemu_trap);

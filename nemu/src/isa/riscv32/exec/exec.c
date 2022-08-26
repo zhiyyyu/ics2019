@@ -110,7 +110,7 @@ static make_EHelper(i_type) {
 }
 
 static OpcodeEntry b_table [8] = {
-  EX(beq), EX(bne), EMPTY, EMPTY, EX(blt), EX(bge), EMPTY, EX(bgeu)
+  EX(beq), EX(bne), EMPTY, EMPTY, EX(blt), EX(bge), EX(bltu), EX(bgeu)
 };
 
 static make_EHelper(b_type) {
