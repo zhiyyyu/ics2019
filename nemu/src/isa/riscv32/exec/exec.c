@@ -23,8 +23,12 @@ static OpcodeEntry as_table [7] = {
   EX(add), EX(mul_lo), EMPTY, EMPTY, EMPTY, EMPTY, EX(sub), EMPTY
 };
 
-static inline uint32_t lowbit(int32_t x){
-  return x & (-x);
+static inline uint32_t lowbit(uint32_t x){
+  switch (x){
+  case 0: case 1: return x;
+  case 32: return 6;
+  default: TODO();
+  }
 }
 
 static make_EHelper(add_sub_mul) {
