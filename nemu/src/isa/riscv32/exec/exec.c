@@ -64,8 +64,17 @@ static make_EHelper(r_type) {
   idex(pc, &r_table[decinfo.isa.instr.funct3]);
 }
 
+static OpcodeEntry ah_table [2] = {
+  EX(sari), EX(shri)
+};
+
+static make_EHelper(sari_shri) {
+  decinfo.width = ah_table[decinfo.isa.instr.funct7 >> 5].width;
+  idex(pc, &ah_table[decinfo.isa.instr.funct7 >> 5]);
+}
+
 static OpcodeEntry i_table [8] = {
-  EX(addi), EX(shli), EMPTY, EX(sltiu), EX(xori), EX(sari), EMPTY, EX(andi)
+  EX(addi), EX(shli), EMPTY, EX(sltiu), EX(xori), EX(sari_shri), EMPTY, EX(andi)
 };
 
 static make_EHelper(i_type) {

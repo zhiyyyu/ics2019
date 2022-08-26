@@ -29,6 +29,7 @@ make_EHelper_I(sari); // srai
 make_EHelper_I(andi);
 make_EHelper_I(xori);
 make_EHelper_I(shli);
+make_EHelper_I(shri);
 
 make_EHelper_R(add);
 make_EHelper_R(sub);
