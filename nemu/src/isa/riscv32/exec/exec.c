@@ -64,8 +64,17 @@ static make_EHelper(sltu_mulhu) {
   idex(pc, &sm_table[decinfo.isa.instr.funct7]);
 }
 
+static OpcodeEntry si_table [2] = {
+  EX(shl), EX(imul_hi)
+};
+
+static make_EHelper(sltu_mulh) {
+  decinfo.width = si_table[decinfo.isa.instr.funct7].width;
+  idex(pc, &si_table[decinfo.isa.instr.funct7]);
+}
+
 static OpcodeEntry r_table [8] = {
-  EX(add_sub_mul), EX(shl), EX(slt), EX(sltu_mulhu), EX(xor_div), EMPTY, EX(or_rem), EX(and)
+  EX(add_sub_mul), EX(sltu_mulh), EX(slt), EX(sltu_mulhu), EX(xor_div), EMPTY, EX(or_rem), EX(and)
 };
 
 static make_EHelper(r_type) {

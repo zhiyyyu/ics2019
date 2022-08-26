@@ -27,6 +27,8 @@ make_EHelper(div_q);  // div
 make_EHelper(div_r);  // rem
 make_EHelper(mul_lo); // mul
 make_EHelper(mul_hi); // mulhu
+make_EHelper(imul_lo); // mul
+make_EHelper(imul_hi); // mulh
 
 make_EHelper(jal);
 make_EHelper(jalr);
