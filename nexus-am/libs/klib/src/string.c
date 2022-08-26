@@ -1,4 +1,5 @@
 #include "klib.h"
+#include <stdio.h>
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
@@ -41,6 +42,7 @@ int strcmp(const char* s1, const char* s2) {
   char *p = s1, *q = s2;
   while(p != '\0' && q != '\0' && *p == *q){
     p++; q++;
+    printf("%c %c", *p, *q);
   }
   if(p == '\0' && q == '\0') return 0;
   if(p == '\0') return -1;
