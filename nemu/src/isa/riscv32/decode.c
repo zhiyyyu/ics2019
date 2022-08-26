@@ -15,6 +15,8 @@ static inline make_DopHelper(i) {
 static inline make_DopHelper(r) {
   op->type = OP_TYPE_REG;
   op->reg = val;
+  // load_val 将val同时复制到op->val
+  // 注意reg会覆盖simm、addr等
   if (load_val) {
     rtl_lr(&op->val, op->reg, 4);
   }
@@ -38,6 +40,7 @@ make_DHelper(ld) {
 
   rtl_add(&id_src->addr, &id_src->val, &id_src2->val);
 
+  // dst 就不需要load_val了
   decode_op_r(id_dest, decinfo.isa.instr.rd, false);
 }
 
@@ -63,13 +66,13 @@ make_DHelper(I) {
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
 }
 
-make_DHelper(jal) {
-  decode_op_r(id_dest, decinfo.isa.instr.rd, true);
+make_DHelper(J) {
   int32_t simm = (decinfo.isa.instr.imm10_1 << 1) |
                 (decinfo.isa.instr.imm11_ << 11) | 
                 (decinfo.isa.instr.imm19_12 << 12) |
                 (decinfo.isa.instr.simm20 << 20);
   decode_op_i(id_src, simm, true);
+  decode_op_r(id_dest, decinfo.isa.instr.rd, false);
 
   print_Dop(id_dest->str, OP_STR_SIZE, "%s", reg_name(id_dest->reg, 4));
   print_Dop(id_src->str, OP_STR_SIZE, "0x%x", id_src->val);

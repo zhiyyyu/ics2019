@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=dummy
+make run ARCH=riscv32-nemu ALL=add
