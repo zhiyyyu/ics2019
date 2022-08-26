@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=min3
+make run ARCH=riscv32-nemu ALL=mov-c
