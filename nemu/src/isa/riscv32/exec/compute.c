@@ -19,7 +19,12 @@ make_EHelper(lui) {
 }
 
 make_EHelper_I(addi);
-make_EHelper_I(sltiu);
 
 make_EHelper_R(add);
 make_EHelper_R(sub);
+
+make_EHelper(sltiu) {
+  rtl_setrelop(RELOP_LTU, &id_dest->val, &id_src->val, &id_src2->val);
+  rtl_sr(id_dest->reg, &id_dest->val, 4);
+  print_asm_template3(sltiu);
+}
