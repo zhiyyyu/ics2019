@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=prime
+make run ARCH=riscv32-nemu ALL=quick-sort
