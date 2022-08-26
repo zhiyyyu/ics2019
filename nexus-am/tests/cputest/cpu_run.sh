@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=quick-sort
+make run ARCH=riscv32-nemu ALL=recursion
