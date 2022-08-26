@@ -29,7 +29,7 @@ static make_EHelper(add_sub) {
 }
 
 static OpcodeEntry r_table [8] = {
-  EX(add_sub), EMPTY, EMPTY, EX(sltu), EX(xor), EMPTY, EX(or), EX(and)
+  EX(add_sub), EX(shl), EMPTY, EX(sltu), EX(xor), EMPTY, EX(or), EX(and)
 };
 
 static make_EHelper(r_type) {
