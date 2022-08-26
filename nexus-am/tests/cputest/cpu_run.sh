@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=shuixianhua
+make run ARCH=riscv32-nemu ALL=string
