@@ -21,6 +21,7 @@ make_EHelper(shl);
 make_EHelper(and);
 make_EHelper(not);
 make_EHelper(div_q);  // div
+make_EHelper(mul_lo); // mul
 
 make_EHelper(jal);
 make_EHelper(jalr);

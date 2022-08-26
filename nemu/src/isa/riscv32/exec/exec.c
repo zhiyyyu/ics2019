@@ -19,13 +19,17 @@ static make_EHelper(store) {
   idex(pc, &store_table[decinfo.isa.instr.funct3]);
 }
 
-static OpcodeEntry as_table [2] = {
-  EX(add), EX(sub)
+static OpcodeEntry as_table [7] = {
+  EX(add), EX(mul_lo), EMPTY, EMPTY, EMPTY, EMPTY, EX(sub), EMPTY
 };
 
-static make_EHelper(add_sub) {
-  decinfo.width = as_table[decinfo.isa.instr.funct7 >> 5].width;
-  idex(pc, &as_table[decinfo.isa.instr.funct7 >> 5]);
+static inline lowbit(uint32_t x){
+  return x & (-x);
+}
+
+static make_EHelper(add_sub_mul) {
+  decinfo.width = as_table[lowbit(decinfo.isa.instr.funct7)].width;
+  idex(pc, &as_table[lowbit(decinfo.isa.instr.funct7)]);
 }
 
 static OpcodeEntry dx_table [2] = {
@@ -38,7 +42,7 @@ static make_EHelper(xor_div) {
 }
 
 static OpcodeEntry r_table [8] = {
-  EX(add_sub), EX(shl), EMPTY, EX(sltu), EX(xor_div), EMPTY, EX(or), EX(and)
+  EX(add_sub_mul), EX(shl), EMPTY, EX(sltu), EX(xor_div), EMPTY, EX(or), EX(and)
 };
 
 static make_EHelper(r_type) {
