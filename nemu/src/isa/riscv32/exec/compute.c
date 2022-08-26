@@ -32,4 +32,4 @@ make_EHelper_R(xor);
 make_EHelper_R(or);
 
 make_EHelper_RE(sltiu, RELOP_LTU);
-make_EHelper_RE(sltu, RELOP_LT);
+make_EHelper_RE(sltu, RELOP_LTU);
