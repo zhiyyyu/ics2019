@@ -28,8 +28,17 @@ static make_EHelper(add_sub) {
   idex(pc, &as_table[decinfo.isa.instr.funct7 >> 5]);
 }
 
+static OpcodeEntry dx_table [2] = {
+  EX(xor), EX(div)
+};
+
+static make_EHelper(xor_div) {
+  decinfo.width = dx_table[decinfo.isa.instr.funct7].width;
+  idex(pc, &dx_table[decinfo.isa.instr.funct7]);
+}
+
 static OpcodeEntry r_table [8] = {
-  EX(add_sub), EX(shl), EMPTY, EX(sltu), EX(xor), EMPTY, EX(or), EX(and)
+  EX(add_sub), EX(shl), EMPTY, EX(sltu), EX(xor_div), EMPTY, EX(or), EX(and)
 };
 
 static make_EHelper(r_type) {
