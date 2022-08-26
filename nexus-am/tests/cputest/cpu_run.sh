@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=sub-longlong
+make run ARCH=riscv32-nemu ALL=sum
