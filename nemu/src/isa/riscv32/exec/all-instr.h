@@ -25,6 +25,7 @@ make_EHelper(jal);
 make_EHelper(jalr);
 make_EHelper(bne);
 make_EHelper(beq);
+make_EHelper(bge);
 
 make_EHelper(inv);
 make_EHelper(nemu_trap);
