@@ -3,8 +3,8 @@
 
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   bool ret = true;
-  Log("ref: %x, pc: %x, cpu.pc: %x", ref_r->pc, pc, cpu.pc);
-  if(ref_r->pc != pc) return false;
+  // Log("ref: %x, pc: %x, cpu.pc: %x", ref_r->pc, pc, cpu.pc);
+  if(ref_r->pc != cpu.pc) return false;
   for(int i=0;i<32;i++){
     if(ref_r->gpr[i]._32 != cpu.gpr[i]._32) return false;
   }
