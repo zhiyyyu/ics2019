@@ -18,20 +18,8 @@ make_EHelper(lui) {
   print_asm_template3(name); \
 }
 
-// make_EHelper(addi) {
-//   rtl_addi(&id_dest->val, &id_src->val, id_src2->val);
-//   rtl_sr(id_dest->reg, &id_dest->val, 4);
-
-//   print_asm_template3(addi);
-// }
-
 make_EHelper_I(addi);
+make_EHelper_I(sltiu);
 
 make_EHelper_R(add);
-
-// make_EHelper(add) {
-//   rtl_add(&id_dest->val, &id_src->val, &id_src2->val);
-//   rtl_sr(id_dest->reg, &id_dest->val, 4);
-
-//   print_asm_template3(addi);
-// }
+make_EHelper_R(sub);

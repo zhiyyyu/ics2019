@@ -13,7 +13,7 @@ make_EHelper(jalr) {
 	rtl_addi(&s0, &cpu.pc, 4);
 	// 从src拷贝到dst，最后一个参数为字节数
 	rtl_sr(id_dest->reg, &s0, 4);
-	
+
 	rtl_addi(&s0, &id_src->val, id_src2->val);
 	// Log("s0 %x", s0);
 	s0 &= ~1;
@@ -21,4 +21,18 @@ make_EHelper(jalr) {
 	rtl_j(s0);
 
 	print_asm_template3(jalr);
+}
+
+make_EHelper(bne) {
+  rtl_add(&s0, cpu.pc, &id_dest->val);
+	rtl_jrelop(RELOP_NE, &id_src->val, &id_src2->val, s0);
+
+  print_asm_template3(bne);
+}
+
+make_EHelper(beq) {
+  rtl_add(&s0, cpu.pc, &id_dest->val);
+	rtl_jrelop(RELOP_EQ, &id_src->val, &id_src2->val, s0);
+
+  print_asm_template3(beq);
 }

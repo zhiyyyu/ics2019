@@ -156,6 +156,11 @@ static inline void rtl_mux(rtlreg_t* dest, const rtlreg_t* cond, const rtlreg_t*
   TODO();
 }
 
+
+#ifdef RISCV32
+#include "isa/riscv32/include/isa/rtl.h"
+#else
 #include "isa/rtl.h"
+#endif
 
 #endif
