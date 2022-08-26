@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=fib
+make run ARCH=riscv32-nemu ALL=goldbach
