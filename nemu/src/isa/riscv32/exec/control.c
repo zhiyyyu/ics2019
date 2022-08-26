@@ -23,16 +23,11 @@ make_EHelper(jalr) {
 	print_asm_template3(jalr);
 }
 
-make_EHelper(bne) {
-  rtl_add(&s0, cpu.pc, &id_dest->val);
-	rtl_jrelop(RELOP_NE, &id_src->val, &id_src2->val, s0);
-
-  print_asm_template3(bne);
+#define make_EHelper_B(name, op) make_EHelper(name) { \
+  rtl_add(&s0, cpu.pc, &id_dest->val); \
+	rtl_jrelop(op, &id_src->val, &id_src2->val, s0); \
+  print_asm_template3(name); \
 }
 
-make_EHelper(beq) {
-  rtl_add(&s0, cpu.pc, &id_dest->val);
-	rtl_jrelop(RELOP_EQ, &id_src->val, &id_src2->val, s0);
-
-  print_asm_template3(beq);
-}
+make_EHelper_B(bne, RELOP_NE);
+make_EHelper_B(beq, RELOP_EQ);
