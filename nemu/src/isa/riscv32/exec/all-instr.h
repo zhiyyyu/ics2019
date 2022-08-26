@@ -20,7 +20,7 @@ make_EHelper(sltu);
 make_EHelper(shl);
 make_EHelper(and);
 make_EHelper(not);
-make_EHelper(div);
+make_EHelper(div_q);  // div
 
 make_EHelper(jal);
 make_EHelper(jalr);

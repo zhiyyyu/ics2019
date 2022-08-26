@@ -35,7 +35,7 @@ make_EHelper_R(xor);
 make_EHelper_R(or);
 make_EHelper_R(and);
 make_EHelper_R(shl);  // sll
-make_EHelper_R(div);
+make_EHelper_R(div_q);
 
 make_EHelper_RE(sltiu, RELOP_LTU);
 make_EHelper_RE(sltu, RELOP_LTU);

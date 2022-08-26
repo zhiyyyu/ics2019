@@ -29,7 +29,7 @@ static make_EHelper(add_sub) {
 }
 
 static OpcodeEntry dx_table [2] = {
-  EX(xor), EX(div)
+  EX(xor), EX(div_q)
 };
 
 static make_EHelper(xor_div) {
