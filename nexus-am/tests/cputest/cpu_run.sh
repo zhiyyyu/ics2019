@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu ALL=if-else
+make run ARCH=riscv32-nemu ALL=leap-year
