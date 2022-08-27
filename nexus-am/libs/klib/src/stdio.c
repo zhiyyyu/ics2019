@@ -17,27 +17,27 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   int num = 0;
   char num_s[32];
   while(*p != '\0'){
-    if(*p++ != '%') continue;
-    switch (*p){
-    case 'd':
-      num = va_arg(ap, int);
-      if(num < 0){
-        *q++ = '-'; num = -num;
+    if(*p == '%') {
+      switch (*++p){
+      case 'd':
+        num = va_arg(ap, int);
+        if(num < 0){
+          *q++ = '-'; num = -num;
+        }
+        itoa(num, num_s);
+        strcpy(q, num_s);
+        q += strlen(num_s);
+        break;
+      case 's':
+        s = va_arg(ap, char*);
+        strcpy(q, s);
+        q += strlen(s);
+        break;
       }
-      itoa(num, num_s);
-      strcpy(q, num_s);
-      q += strlen(num_s);
-      break;
-    case 's':
-      s = va_arg(ap, char*);
-      strcpy(q, s);
-      q += strlen(s);
-      break;
-    default:
-      *q++ = *p;
-      break;
+      p++;
+    } else{
+      *q = *p; p++; q++;
     }
-    p++;
   }
   return 0;
 }
