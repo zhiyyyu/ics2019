@@ -2,15 +2,13 @@
 #include <amdev.h>
 #include <nemu.h>
 
-#define SCREEN_H 300
-#define SCREEN_W 400
-
 size_t __am_video_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_VIDEO_INFO: {
+      uint32_t wh = inl(SCREEN_ADDR);
       _DEV_VIDEO_INFO_t *info = (_DEV_VIDEO_INFO_t *)buf;
-      info->width = SCREEN_W;
-      info->height = SCREEN_H;
+      info->width = wh >> 16;
+      info->height = wh & 0xffff;
       return sizeof(_DEV_VIDEO_INFO_t);
     }
     // case _DEVREG_VIDEO_FBCTL: {
