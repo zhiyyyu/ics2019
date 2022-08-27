@@ -11,11 +11,12 @@ void srand(unsigned int seed) {
 }
 
 void itoa(int num, char* s){
+  char *p = s;
   while(num){
-    *s++ = num % 10 + '0';
+    *p++ = num % 10 + '0';
     num /= 10;
   }
-  *s = '\0';
+  *p = '\0';
   int len = strlen(s);
   for(int i=0;i<len/2;i++){
     int tmp = s[len-1-i];
