@@ -39,6 +39,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
       *q = *p; p++; q++;
     }
   }
+  *q = '\0';
   return 0;
 }
 
