@@ -1,6 +1,7 @@
 #include <amtest.h>
 
 static inline void putstr(const char *s) {
+  // _putc用了SERIALPORT
   for (; *s; s ++) _putc(*s);
 }
 

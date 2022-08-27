@@ -4,12 +4,14 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-  // va_list ap;
-  // int ret = -1;
-  // va_start(ap, format);
-  // ret = vprintf(format, ap);
-  // va_end(ap);
-  // return ret;
+  char buf[512];
+  va_list args;
+  int ret = -1;
+  va_start(args, fmt);  // 变参放入堆栈构造
+  ret = vsprintf(buf, fmt, args);
+  va_end(args);
+  if(!ret) for(int i=0;buf[i] != '\0';i++) _putc(buf[i]);
+  return ret;
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
@@ -33,6 +35,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
         strcpy(q, s);
         q += strlen(s);
         break;
+      default: return -1;
       }
       p++;
     } else{
