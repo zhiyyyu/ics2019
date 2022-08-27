@@ -9,3 +9,17 @@ int rand(void) {
 void srand(unsigned int seed) {
   next = seed;
 }
+
+void itoa(int num, char* s){
+  while(num){
+    *s++ = num % 10;
+    num /= 10;
+  }
+  *s = '\0';
+  int len = strlen(s);
+  for(int i=0;i<len/2;i++){
+    int tmp = s[len-1-i];
+    s[len-1-i] = s[i];
+    s[i] = tmp;
+  }
+}

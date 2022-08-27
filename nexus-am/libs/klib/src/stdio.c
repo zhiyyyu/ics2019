@@ -15,6 +15,7 @@ int printf(const char *fmt, ...) {
 int vsprintf(char *out, const char *fmt, va_list ap) {
   char *p = fmt, *q = out, *s;
   int num = 0;
+  char num_s[32];
   while(*p != '\0'){
     if(*p++ != '%') continue;
     switch (*p){
@@ -23,9 +24,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
       if(num < 0){
         *q++ = '-'; num = -num;
       }
-      s = atoi(num);
-      strcpy(q, s);
-      q += strlen(s);
+      itoa(num, num_s);
+      strcpy(q, num_s);
+      q += strlen(num_s);
       break;
     case 's':
       s = va_arg(ap, char*);
