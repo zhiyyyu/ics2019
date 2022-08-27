@@ -1,1 +1,1 @@
-make run ARCH=riscv32-nemu mainargs=k
+make run ARCH=riscv32-nemu mainargs=v
