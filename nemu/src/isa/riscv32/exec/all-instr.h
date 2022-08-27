@@ -13,6 +13,7 @@ make_EHelper(andi);
 make_EHelper(xori);
 make_EHelper(shli);
 make_EHelper(shri);
+make_EHelper(ori);
 
 make_EHelper(add);
 make_EHelper(sub);
@@ -25,8 +26,10 @@ make_EHelper(sar);
 make_EHelper(shr);
 make_EHelper(and);
 make_EHelper(not);
-make_EHelper(div_q);  // div
-make_EHelper(div_r);  // rem
+make_EHelper(idiv_q);  // div
+make_EHelper(idiv_r);  // rem
+make_EHelper(div_q);  // divu
+make_EHelper(div_r);  // remu
 make_EHelper(mul_lo); // mul
 make_EHelper(mul_hi); // mulhu
 make_EHelper(imul_lo); // mul

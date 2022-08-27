@@ -23,7 +23,7 @@ static OpcodeEntry as_table [7] = {
   EX(add), EX(mul_lo), EMPTY, EMPTY, EMPTY, EMPTY, EX(sub), EMPTY
 };
 
-static inline uint32_t lowbit(uint32_t x){
+static inline uint32_t highbit(uint32_t x){
   switch (x){
   case 0: case 1: return x;
   case 32: return 6;
@@ -33,12 +33,12 @@ static inline uint32_t lowbit(uint32_t x){
 
 static make_EHelper(add_sub_mul) {
   // Log("add_sub_mul: %x %d", decinfo.isa.instr.funct7, lowbit(decinfo.isa.instr.funct7));
-  decinfo.width = as_table[lowbit(decinfo.isa.instr.funct7)].width;
-  idex(pc, &as_table[lowbit(decinfo.isa.instr.funct7)]);
+  decinfo.width = as_table[highbit(decinfo.isa.instr.funct7)].width;
+  idex(pc, &as_table[highbit(decinfo.isa.instr.funct7)]);
 }
 
 static OpcodeEntry dx_table [2] = {
-  EX(xor), EX(div_q)
+  EX(xor), EX(idiv_q)
 };
 
 static make_EHelper(xor_div) {
@@ -47,7 +47,7 @@ static make_EHelper(xor_div) {
 }
 
 static OpcodeEntry or_table [2] = {
-  EX(or), EX(div_r)
+  EX(or), EX(idiv_r)
 };
 
 static make_EHelper(or_rem) {
@@ -68,22 +68,31 @@ static OpcodeEntry si_table [2] = {
   EX(shl), EX(imul_hi)
 };
 
-static make_EHelper(sltu_mulh) {
+static make_EHelper(shl_mulh) {
   decinfo.width = si_table[decinfo.isa.instr.funct7].width;
   idex(pc, &si_table[decinfo.isa.instr.funct7]);
 }
 
-static OpcodeEntry ah_table [2] = {
-  EX(shr), EX(sar)
+static OpcodeEntry ah_table [7] = {
+  EX(shr), EX(div_q), EMPTY, EMPTY, EMPTY, EMPTY, EX(sar), EMPTY
 };
 
 static make_EHelper(sra_srl) {
-  decinfo.width = ah_table[decinfo.isa.instr.funct7 >> 5].width;
-  idex(pc, &ah_table[decinfo.isa.instr.funct7 >> 5]);
+  decinfo.width = ah_table[highbit(decinfo.isa.instr.funct7)].width;
+  idex(pc, &ah_table[highbit(decinfo.isa.instr.funct7)]);
+}
+
+static OpcodeEntry and_remu_table [2] = {
+  EX(and), EX(idiv_r)
+};
+
+static make_EHelper(and_remu) {
+  decinfo.width = and_remu_table[decinfo.isa.instr.funct7].width;
+  idex(pc, &and_remu_table[decinfo.isa.instr.funct7]);
 }
 
 static OpcodeEntry r_table [8] = {
-  EX(add_sub_mul), EX(sltu_mulh), EX(slt), EX(sltu_mulhu), EX(xor_div), EX(sra_srl), EX(or_rem), EX(and)
+  EX(add_sub_mul), EX(shl_mulh), EX(slt), EX(sltu_mulhu), EX(xor_div), EX(sra_srl), EX(or_rem), EX(and_remu)
 };
 
 static make_EHelper(r_type) {
@@ -101,7 +110,7 @@ static make_EHelper(sari_shri) {
 }
 
 static OpcodeEntry i_table [8] = {
-  EX(addi), EX(shli), EMPTY, EX(sltiu), EX(xori), EX(sari_shri), EMPTY, EX(andi)
+  EX(addi), EX(shli), EMPTY, EX(sltiu), EX(xori), EX(sari_shri), EX(ori), EX(andi)
 };
 
 static make_EHelper(i_type) {

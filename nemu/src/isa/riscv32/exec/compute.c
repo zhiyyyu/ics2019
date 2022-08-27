@@ -30,6 +30,7 @@ make_EHelper_I(andi);
 make_EHelper_I(xori);
 make_EHelper_I(shli);
 make_EHelper_I(shri);
+make_EHelper_I(ori);
 
 make_EHelper_R(add);
 make_EHelper_R(sub);
@@ -41,6 +42,8 @@ make_EHelper_R(sar);  // sra
 make_EHelper_R(shr);  // srl
 make_EHelper_R(div_q);
 make_EHelper_R(div_r);
+make_EHelper_R(idiv_q);
+make_EHelper_R(idiv_r);
 make_EHelper_R(mul_lo);
 make_EHelper_R(mul_hi);
 make_EHelper_R(imul_lo);
