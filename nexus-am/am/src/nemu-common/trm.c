@@ -11,6 +11,7 @@ _Area _heap = {
 };
 
 void _putc(char ch) {
+  // 向serial_port地址的位置写入一个字节
   outb(SERIAL_PORT, ch);
 }
 
