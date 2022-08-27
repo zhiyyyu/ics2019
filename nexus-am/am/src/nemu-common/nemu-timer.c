@@ -2,16 +2,13 @@
 #include <amdev.h>
 #include <nemu.h>
 
-#define RTC_PORT 0x48   // Note that this is not the standard
-#define RTC_MMIO 0xa1000048
-
 static uint32_t boot_time;
 
 size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
   switch (reg) {
     case _DEVREG_TIMER_UPTIME: {
       uint32_t now;
-      now = inl(RTC_PORT);
+      now = inl(RTC_ADDR);
       _DEV_TIMER_UPTIME_t *uptime = (_DEV_TIMER_UPTIME_t *)buf;
       uptime->hi = 0;
       uptime->lo = now - boot_time;
@@ -32,5 +29,5 @@ size_t __am_timer_read(uintptr_t reg, void *buf, size_t size) {
 }
 
 void __am_timer_init() {
-  boot_time = inl(RTC_PORT);
+  boot_time = inl(RTC_ADDR);
 }
