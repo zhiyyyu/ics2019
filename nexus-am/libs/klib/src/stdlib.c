@@ -10,7 +10,7 @@ void srand(unsigned int seed) {
   next = seed;
 }
 
-void itoa(int num, char* s){
+void mitoa(int num, char* s){
   if(num == 0) {
     s[0] = '0'; s[1] = '\0'; return;
   }

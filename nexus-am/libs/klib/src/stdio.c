@@ -26,7 +26,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
         if(num < 0){
           *q++ = '-'; num = -num;
         }
-        itoa(num, num_s);
+        mitoa(num, num_s);
         strcpy(q, num_s);
         q += strlen(num_s);
         break;
