@@ -11,6 +11,9 @@ void srand(unsigned int seed) {
 }
 
 void itoa(int num, char* s){
+  if(num == 0) {
+    s[0] = '0'; s[1] = '\0'; return;
+  }
   char *p = s;
   while(num){
     *p++ = num % 10 + '0';
