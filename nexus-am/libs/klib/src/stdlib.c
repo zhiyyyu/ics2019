@@ -12,7 +12,7 @@ void srand(unsigned int seed) {
 
 void itoa(int num, char* s){
   while(num){
-    *s++ = num % 10;
+    *s++ = num % 10 + '0';
     num /= 10;
   }
   *s = '\0';
