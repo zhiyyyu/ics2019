@@ -12,8 +12,10 @@
 
 static inline rtlreg_t* getCSRs(int32_t csr) {
   switch (csr) {
-  case 0x105:
-    return &stvec;
+  case 0x105: return &stvec;
+  case 0x142: return &scause;
+  case 0x100: return &sstatus;
+  case 0x141: return &sepc;
   default:
     TODO();
   }
