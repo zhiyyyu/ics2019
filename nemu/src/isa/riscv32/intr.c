@@ -7,7 +7,8 @@ void raise_intr(uint32_t NO, vaddr_t epc) {
   rtl_li(&sepc, epc);
   rtl_li(&scause, NO);
   rtl_mv(&s0, &sepc);
-  rtl_j(&s0);
+  Log("jump to %d", s0);
+  rtl_j(s0);
 }
 
 bool isa_query_intr(void) {
