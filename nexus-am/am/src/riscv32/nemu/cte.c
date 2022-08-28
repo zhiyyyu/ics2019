@@ -24,6 +24,9 @@ extern void __am_asm_trap(void);
 
 int _cte_init(_Context*(*handler)(_Event, _Context*)) {
   // initialize exception entry
+  // %0是占位符，第一个冒号后面表示输出，第二个冒号后面表示输入
+  // "r" 表示输入可以是寄存器
+  // stvec中保存异常入口地址
   asm volatile("csrw stvec, %0" : : "r"(__am_asm_trap));
 
   // register event handler

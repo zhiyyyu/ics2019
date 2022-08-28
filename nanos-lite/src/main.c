@@ -33,7 +33,7 @@ int main() {
   Log("Finish initialization");
 
 #ifdef HAS_CTE
-  _yield();
+  _yield(); // 会调用ecall，a7=-1
 #endif
 
   panic("Should not reach here");

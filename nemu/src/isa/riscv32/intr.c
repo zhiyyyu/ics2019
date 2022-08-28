@@ -4,6 +4,10 @@ void raise_intr(uint32_t NO, vaddr_t epc) {
   /* TODO: Trigger an interrupt/exception with ``NO''.
    * That is, use ``NO'' to index the IDT.
    */
+  rtl_li(&sepc, epc);
+  rtl_li(&scause, NO);
+  rtl_mv(&s0, &sepc);
+  rtl_j(&s0);
 }
 
 bool isa_query_intr(void) {

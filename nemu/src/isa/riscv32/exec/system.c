@@ -14,5 +14,6 @@ make_EHelper(csrrw) {
 }
 
 make_EHelper(ecall) {
-  TODO();
+  
+  raise_intr(reg_l(16), cpu.pc);
 }

@@ -7,8 +7,9 @@
 #include "rtl/rtl-wrapper.h"
 
 extern rtlreg_t s0, s1, t0, t1, ir;
-extern rtlreg_t stvec;
+extern rtlreg_t stvec, sepc, sstatus, scause;
 
+void raise_intr(uint32_t NO, vaddr_t epc);
 void decinfo_set_jmp(bool is_jmp);
 bool interpret_relop(uint32_t relop, const rtlreg_t src1, const rtlreg_t src2);
 
