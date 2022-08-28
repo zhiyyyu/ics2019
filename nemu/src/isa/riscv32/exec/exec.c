@@ -128,7 +128,7 @@ static make_EHelper(b_type) {
 }
 
 static OpcodeEntry csr_table [8] = {
-  EX(ecall), EX(csrrw), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+  EX(ecall), EX(csrrw), EX(csrrs), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
 };
 
 static make_EHelper(csr) {
