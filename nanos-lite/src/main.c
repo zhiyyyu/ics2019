@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../include/common.h"
 
 void init_mm(void);
 void init_ramdisk(void);

@@ -10,6 +10,15 @@
 #include "rtl/rtl.h"
 #endif
 
+static inline rtlreg_t* getCSRs(int32_t csr) {
+  switch (csr) {
+  case 0x105:
+    return &stvec;
+  default:
+    TODO();
+  }
+}
+
 #define make_EHelper(name) void concat(exec_, name) (vaddr_t *pc)
 typedef void (*EHelper) (vaddr_t *);
 
