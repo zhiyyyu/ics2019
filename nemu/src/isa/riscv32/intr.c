@@ -6,8 +6,8 @@ void raise_intr(uint32_t NO, vaddr_t epc) {
    */
   rtl_li(&sepc, epc);
   rtl_li(&scause, NO);
-  rtl_mv(&s0, &sepc);
-  Log("jump to %d", s0);
+  rtl_mv(&s0, &stvec);
+  Log("ecall jump to %x", s0);
   rtl_j(s0);
 }
 
