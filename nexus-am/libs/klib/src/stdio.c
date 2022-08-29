@@ -17,6 +17,7 @@ int printf(const char *fmt, ...) {
 int vsprintf(char *out, const char *fmt, va_list ap) {
   char *p = fmt, *q = out, *s;
   int num = 0;
+  unsigned int hex = 0;
   char num_s[32];
   while(*p != '\0'){
     if(*p == '%') {
@@ -31,8 +32,8 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
         q += strlen(num_s);
         break;
       case 'x':
-        num = va_arg(ap, unsigned int);
-        mitoa(num, num_s, 16);
+        hex = va_arg(ap, unsigned int);
+        mitoa(hex, num_s, 16);
         strcpy(q, num_s);
         q += strlen(num_s);
         break;
