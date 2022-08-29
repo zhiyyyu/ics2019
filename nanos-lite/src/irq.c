@@ -10,9 +10,8 @@ static _Context* do_event(_Event e, _Context* c) {
     printf("get syscall.\n");
     c->GPRx = do_syscall(c); // 返回值保存在a0
     break;
-  default: panic("Unhandled event ID = %d", e.event);
+  default: panic("Unhandled event ID = %d, NO = %d", e.event, e.cause);
   }
-
   return NULL;
 }
 
