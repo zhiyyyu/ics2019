@@ -21,5 +21,5 @@ make_EHelper(csrrw) {
 
 make_EHelper(ecall) {
   
-  raise_intr(reg_l(16), cpu.pc);
+  raise_intr(reg_l(17), cpu.pc);
 }
