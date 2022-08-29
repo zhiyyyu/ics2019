@@ -3,7 +3,6 @@
 #include <klib.h>
 
 static _Context* (*user_handler)(_Event, _Context*) = NULL;
-extern _Context* do_syscall(_Context *c);
 
 _Context* __am_irq_handle(_Context *c) {
   // printf("__am_irq_handle: ");
@@ -18,7 +17,6 @@ _Context* __am_irq_handle(_Context *c) {
     case 8: case 9: case 10: case 11: case 12: case 13:
     case 14: case 15: case 16: case 17: case 18: case 19:
       ev.event = _EVENT_SYSCALL; 
-      c->GPRx = do_syscall(c); // 返回值保存在a0
       break;
     default: ev.event = _EVENT_ERROR; break;
     }
