@@ -34,11 +34,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
       case 'x':
         num = va_arg(ap, int);
         if(num < 0){
-          hex = -num + 0x80000000;
-        } else {
-          hex = num;
+          *q++ = '-'; num = -num;
         }
-        mitoa(hex, num_s, 16);
+        mitoa(num, num_s, 16);
         strcpy(q, num_s);
         q += strlen(num_s);
         break;
