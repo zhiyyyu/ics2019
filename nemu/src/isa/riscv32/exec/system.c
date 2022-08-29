@@ -20,6 +20,11 @@ make_EHelper(csrrw) {
 }
 
 make_EHelper(ecall) {
-  
   raise_intr(reg_l(17), cpu.pc);
+  print_asm("ecall");
+}
+
+make_EHelper(sret) {
+  return_intr();
+  print_asm("sret");
 }

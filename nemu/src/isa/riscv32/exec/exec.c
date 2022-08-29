@@ -127,8 +127,17 @@ static make_EHelper(b_type) {
   idex(pc, &b_table[decinfo.isa.instr.funct3]);
 }
 
+static OpcodeEntry es_table [2] = {
+  EX(ecall), EX(sret)
+};
+
+static make_EHelper(ecall_sret) {
+  decinfo.width = es_table[decinfo.isa.instr.funct7 > 0].width;
+  idex(pc, &es_table[decinfo.isa.instr.funct7 > 0]);
+}
+
 static OpcodeEntry csr_table [8] = {
-  EX(ecall), EX(csrrw), EX(csrrs), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
+  EX(ecall_sret), EX(csrrw), EX(csrrs), EMPTY, EMPTY, EMPTY, EMPTY, EMPTY
 };
 
 static make_EHelper(csr) {

@@ -50,3 +50,4 @@ make_EHelper(nemu_trap);
 make_EHelper(csrrs);
 make_EHelper(csrrw);
 make_EHelper(ecall);
+make_EHelper(sret);
