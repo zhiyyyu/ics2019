@@ -33,9 +33,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
         break;
       case 'x':
         num = va_arg(ap, int);
-        if(num < 0){
-          *q++ = '-'; num = -num;
-        }
+        // if(num < 0){
+        //   *q++ = '-'; num = -num;
+        // }
         mitoa(num, num_s, 16);
         strcpy(q, num_s);
         q += strlen(num_s);
