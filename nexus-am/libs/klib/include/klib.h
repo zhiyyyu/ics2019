@@ -57,7 +57,7 @@ const char *strchr(const char *s, int c);
 
 // stdlib.h
 int atoi(const char* nptr);
-void mitoa(int num, char* s, int base);
+void mitoa(unsigned int num, char* s, int base);
 int abs(int x);
 unsigned long time();
 void srand(unsigned int seed);
