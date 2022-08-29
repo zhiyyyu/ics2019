@@ -2,8 +2,6 @@
 #include "syscall.h"
 #include <am.h>
 
-extern void _exit(int status);
-
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
   a[0] = c->GPR1;
