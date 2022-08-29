@@ -26,7 +26,16 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
         if(num < 0){
           *q++ = '-'; num = -num;
         }
-        mitoa(num, num_s);
+        mitoa(num, num_s, 10);
+        strcpy(q, num_s);
+        q += strlen(num_s);
+        break;
+      case 'x':
+        num = va_arg(ap, int);
+        if(num < 0){
+          *q++ = '-'; num = -num;
+        }
+        mitoa(num, num_s, 16);
         strcpy(q, num_s);
         q += strlen(num_s);
         break;

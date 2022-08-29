@@ -10,14 +10,16 @@ void srand(unsigned int seed) {
   next = seed;
 }
 
-void mitoa(int num, char* s){
+void mitoa(int num, char* s, int base){
   if(num == 0) {
     s[0] = '0'; s[1] = '\0'; return;
   }
   char *p = s;
   while(num){
-    *p++ = num % 10 + '0';
-    num /= 10;
+    *p = num % base;
+    if(*p < 10) *p += '0';
+    else *p += 'a' - 10;
+    p++; num /= base;
   }
   *p = '\0';
   int len = strlen(s);
