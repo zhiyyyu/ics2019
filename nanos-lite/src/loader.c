@@ -15,8 +15,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   // 读取Elf头
   ramdisk_read(&ehdr, 0, sizeof(Elf_Ehdr));
   Elf_Phdr phdr[ehdr.e_phnum];
-  ramdisk_read(phdr, ehdr.e_ehsize, sizeof(phdr)*ehdr.e_phnum);
-  for(int i=0;i<ehdr.e_phnum;i++){
+  ramdisk_read(phdr, ehdr.e_ehsize, sizeof(Elf_Phdr)*ehdr.e_phnum);
+  for(size_t i=0;i<ehdr.e_phnum;i++){
     if(phdr[i].p_type == PT_LOAD){
       ramdisk_read((void*)phdr[i].p_vaddr, phdr[i].p_offset, phdr[i].p_memsz);
       memset((void*)(phdr[i].p_vaddr + phdr[i].p_filesz), 0
@@ -28,7 +28,7 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
 
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
-  Log("Jump to entry = %x", entry);
+  Log("Jump to entry = 0X%x", entry);
   ((void(*)())entry) ();
 }
 
