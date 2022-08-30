@@ -902,7 +902,7 @@ _VFPRINTF_R (struct _reent *data,
 	 */
 	for (;;) {
 	        cp = fmt;
-			PRINT (cp, 1);
+			write(1, "reach here\n", 11);
 #ifdef _MB_CAPABLE
 	        while ((n = __MBTOWC (data, &wc, fmt, MB_CUR_MAX,
 				      &state)) != 0) {
