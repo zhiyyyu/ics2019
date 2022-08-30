@@ -26,8 +26,8 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   return ehdr.e_entry;
 }
 
-extern void difftest_dettach();
-extern void difftest_attach();
+// extern void difftest_dettach();
+// extern void difftest_attach();
 
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
