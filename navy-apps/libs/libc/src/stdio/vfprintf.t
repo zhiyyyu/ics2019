@@ -1653,6 +1653,7 @@ number:			if ((dprec = prec) >= 0)
                          *--cp = '0';
 
 			size = buf + BUF - cp;
+			write(1, "num: ", 5);
 			write(1, cp, size);
 		skipsize:
 			break;
@@ -1694,6 +1695,7 @@ number:			if ((dprec = prec) >= 0)
 
 		/* prefix */
 		if (sign){
+			write(1, "sign: ", 6);
 			write(1, &sign, 1);
 			// PRINT (&sign, 1);
 		}
