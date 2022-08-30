@@ -903,8 +903,8 @@ _VFPRINTF_R (struct _reent *data,
 	 */
 	for (;;) {
 		cp = fmt;
-		write(1, "   ", 3);
-		write(1, &i, 1); i++;
+		// write(1, "   ", 3);
+		// write(1, &i, 1); i++;
 #ifdef _MB_CAPABLE
 	        while ((n = __MBTOWC (data, &wc, fmt, MB_CUR_MAX,
 				      &state)) != 0) {
@@ -923,9 +923,9 @@ _VFPRINTF_R (struct _reent *data,
 		}
 #endif
 		if ((m = fmt - cp) != 0) {
-			write(1, "write", 5);
-			write(1, cp, m);
-			write(1, "PRINT", 5);
+			// write(1, "write", 5);
+			// write(1, cp, m);
+			// write(1, "PRINT", 5);
 			PRINT(cp, m);
 			ret += m;
 		}
@@ -1697,9 +1697,9 @@ number:			if ((dprec = prec) >= 0)
 
 		/* prefix */
 		if (sign){
-			write(1, "sign: ", 6);
-			write(1, &sign, 1);
-			// PRINT (&sign, 1);
+			// write(1, "sign: ", 6);
+			// write(1, &sign, 1);
+			PRINT (&sign, 1);
 		}
 		if (flags & HEXPREFIX)
 			PRINT (ox, 2);
