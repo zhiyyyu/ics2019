@@ -1204,7 +1204,7 @@ reswitch:	switch (ch) {
 				sign = '-';
 			}
 			base = DEC;
-			write(1, "\%d", 2);
+			// write(1, "\%d", 2);
 			goto number;
 #ifdef FLOATING_POINT
 # ifdef _WANT_IO_C99_FORMATS
@@ -1690,8 +1690,10 @@ number:			if ((dprec = prec) >= 0)
 			PAD (width - realsz, blanks);
 
 		/* prefix */
-		if (sign)
+		if (sign){
+			write(1, &sign, 1);
 			PRINT (&sign, 1);
+		}
 		if (flags & HEXPREFIX)
 			PRINT (ox, 2);
 
