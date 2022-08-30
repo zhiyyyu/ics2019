@@ -14,6 +14,10 @@ int main() {
   Log("'Hello World!' from Nanos-lite");
   Log("Build time: %s, %s", __TIME__, __DATE__);
 
+#ifdef DIFF_TEST
+  difftest_dettach();
+#endif
+
 #ifdef HAS_VME
   init_mm();
 #endif
