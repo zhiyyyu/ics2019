@@ -921,7 +921,7 @@ _VFPRINTF_R (struct _reent *data,
 #endif
 		if ((m = fmt - cp) != 0) {
 			write(1, cp, m);
-			PRINT(cp, m);
+			// PRINT(cp, m);
 			ret += m;
 		}
 #ifdef _MB_CAPABLE
