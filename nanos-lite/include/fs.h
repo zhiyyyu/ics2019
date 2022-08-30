@@ -7,4 +7,6 @@
 enum {SEEK_SET, SEEK_CUR, SEEK_END};
 #endif
 
+size_t fs_write(int fd, const void *buf, size_t len);
+
 #endif
