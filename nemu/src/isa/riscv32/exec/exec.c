@@ -83,7 +83,7 @@ static make_EHelper(sra_srl) {
 }
 
 static OpcodeEntry and_remu_table [2] = {
-  EX(and), EX(idiv_r)
+  EX(and), EX(div_r)
 };
 
 static make_EHelper(and_remu) {
