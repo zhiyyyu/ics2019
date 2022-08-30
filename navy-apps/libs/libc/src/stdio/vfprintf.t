@@ -1695,7 +1695,7 @@ number:			if ((dprec = prec) >= 0)
 		/* prefix */
 		if (sign){
 			write(1, &sign, 1);
-			PRINT (&sign, 1);
+			// PRINT (&sign, 1);
 		}
 		if (flags & HEXPREFIX)
 			PRINT (ox, 2);
