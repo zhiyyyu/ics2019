@@ -14,7 +14,7 @@ void raise_intr(uint32_t NO, vaddr_t epc) {
 
 void return_intr() {
   rtl_mv(&s0, &sepc);
-  rtl_j(s0 + 4);
+  rtl_j(s0);
 }
 
 bool isa_query_intr(void) {
