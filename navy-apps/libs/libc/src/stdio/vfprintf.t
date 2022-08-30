@@ -917,12 +917,11 @@ _VFPRINTF_R (struct _reent *data,
 		}
 #else
                 while (*fmt != '\0' && *fmt != '%'){
-					PRINT (fmt, 1);
 					fmt += 1;
 				}
 #endif
 		if ((m = fmt - cp) != 0) {
-			PRINT (cp, m);
+			write(1, cp, m);
 			ret += m;
 		}
 #ifdef _MB_CAPABLE
