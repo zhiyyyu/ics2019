@@ -9,7 +9,7 @@ static _Context* do_event(_Event e, _Context* c) {
   case _EVENT_YIELD: Log("get yield."); break;
   case _EVENT_SYSCALL: 
     Log("get syscall.");
-    c->GPRx = do_syscall(c); // 返回值保存在a0
+    do_syscall(c); // 返回值保存在a0
     break;
   default: panic("Unhandled event ID = %d, NO = %d", e.event, e.cause);
   }
