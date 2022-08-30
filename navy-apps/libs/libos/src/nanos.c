@@ -70,7 +70,7 @@ int _write(int fd, void *buf, size_t count) {
 static char buf[50];
 
 void *_sbrk(intptr_t increment) {
-  sprintf(buf, "%d %d", program_break, increment);
+  sprintf(buf, "%d %d\n", program_break, increment);
   _write(1, buf, 50);
   void* old_pb = program_break;
   int ret = _syscall_(SYS_brk, program_break+increment, 0, 0);
