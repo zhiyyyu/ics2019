@@ -11,10 +11,10 @@ _Context* do_syscall(_Context *c) {
   printf("a[0] %d, a[1] %d, a[2] %d, a[3] %d\n", a[0], a[1], a[2], a[3]);
 
   switch (a[0]) {
-  case SYS_yield: 
-    _yield(); return NULL;
   case SYS_exit: 
     _halt(a[1]); return NULL;
+  case SYS_yield: 
+    _yield(); return NULL;
   case SYS_write: 
     printf("sys_write\n");
     c->GPRx = fs_write(a[1], (void*) a[2], a[3]); return NULL;
