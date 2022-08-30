@@ -70,10 +70,10 @@ static char buf[50];
 
 void *_sbrk(intptr_t increment) {
   static void* program_break = (intptr_t) &_end;
-  sprintf(buf, "%x %x %d\n", &_end, program_break, increment);
-  _write(1, buf, 50);
+  // sprintf(buf, "%x %x %d\n", &_end, program_break, increment);
+  // _write(1, buf, 50);
   void* old_pb = program_break;
-  int ret = _syscall_(SYS_brk, program_break+increment, 0, 0);
+  int ret = _syscall_(SYS_brk, (uintptr_t) program_break+increment, 0, 0);
   if(ret) return (void *)-1;
   program_break += increment;
   return old_pb;
