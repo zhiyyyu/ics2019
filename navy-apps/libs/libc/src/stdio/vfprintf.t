@@ -915,8 +915,10 @@ _VFPRINTF_R (struct _reent *data,
                     fmt += n;
 		}
 #else
-                while (*fmt != '\0' && *fmt != '%')
-                    fmt += 1;
+                while (*fmt != '\0' && *fmt != '%'){
+					PRINT (fmt, 1);
+					fmt += 1;
+				}
 #endif
 		if ((m = fmt - cp) != 0) {
 			PRINT (cp, m);
