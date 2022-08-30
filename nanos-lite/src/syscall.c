@@ -20,7 +20,8 @@ _Context* do_syscall(_Context *c) {
     _yield(); return NULL;
   case SYS_write: 
     Log("sys_write");
-    c->GPRx = fs_write(a[1], (void*) a[2], a[3]); return NULL;
+    // c->GPRx = fs_write(a[1], (void*) a[2], a[3]); 
+    return NULL;
   case SYS_brk:
     Log("sys_brk");
     return NULL;
