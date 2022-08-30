@@ -46,14 +46,5 @@ size_t fs_write(int fd, const void *buf, size_t len){
     }
     length = len;
   }
-  // if(file_table[fd].disk_offset+len>=file_table[fd].size)
-  //   len=file_table[fd].size-file_table[fd].disk_offset;
-  // if(fd>2){
-  //   if(file_table[fd].write==NULL)
-  //     length=ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-  //   else
-  //     length=file_table[fd].write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, len);
-  //   file_table[fd].disk_offset+=length;
-  // }
   return length;
 }

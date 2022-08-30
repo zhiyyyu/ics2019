@@ -9,17 +9,17 @@ _Context* do_syscall(_Context *c) {
   a[1] = c->GPR2;
   a[2] = c->GPR3;
   a[3] = c->GPR4;
-  Log("a[0] %d, a[1] %d, a[2] %d, a[3] %d\n", a[0], a[1], a[2], a[3]);
+  Log("a[0] %d, a[1] %d, a[2] %d, a[3] %d", a[0], a[1], a[2], a[3]);
 
   switch (a[0]) {
   case SYS_exit: 
-    Log("sys_exit\n");
+    Log("sys_exit");
     _halt(a[1]); return NULL;
   case SYS_yield: 
-    Log("sys_yield\n");
+    Log("sys_yield");
     _yield(); return NULL;
   case SYS_write: 
-    Log("sys_write\n");
+    Log("sys_write");
     c->GPRx = fs_write(a[1], (void*) a[2], a[3]); return NULL;
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
