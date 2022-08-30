@@ -923,8 +923,10 @@ _VFPRINTF_R (struct _reent *data,
 		}
 #endif
 		if ((m = fmt - cp) != 0) {
+			write(1, "write", 5);
 			write(1, cp, m);
-			// PRINT(cp, m);
+			write(1, "PRINT", 5);
+			PRINT(cp, m);
 			ret += m;
 		}
 #ifdef _MB_CAPABLE
@@ -1653,8 +1655,8 @@ number:			if ((dprec = prec) >= 0)
                          *--cp = '0';
 
 			size = buf + BUF - cp;
-			write(1, "num: ", 5);
-			write(1, cp, size);
+			// write(1, "num: ", 5);
+			// write(1, cp, size);
 		skipsize:
 			break;
 		default:	/* "%?" prints ?, unless ? is NUL */
