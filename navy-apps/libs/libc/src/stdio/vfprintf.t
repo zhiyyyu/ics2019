@@ -929,6 +929,7 @@ _VFPRINTF_R (struct _reent *data,
                 if (*fmt == '\0')
                     goto done;
 #endif
+		// *fmt == '%'
 		fmt_anchor = fmt;
 		fmt++;		/* skip over '%' */
 
