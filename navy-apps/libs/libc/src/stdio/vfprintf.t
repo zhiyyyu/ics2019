@@ -915,20 +915,21 @@ _VFPRINTF_R (struct _reent *data,
                     fmt += n;
 		}
 #else
-                while (*fmt != '\0' && *fmt != '%'){
-					fmt += 1;
-				}
+		while (*fmt != '\0' && *fmt != '%'){
+			fmt += 1;
+		}
 #endif
 		if ((m = fmt - cp) != 0) {
 			write(1, cp, m);
+			PRINT(cp, m);
 			ret += m;
 		}
 #ifdef _MB_CAPABLE
 		if (n <= 0)
                     goto done;
 #else
-                if (*fmt == '\0')
-                    goto done;
+		if (*fmt == '\0')
+			goto done;
 #endif
 		// *fmt == '%'
 		fmt_anchor = fmt;
@@ -1203,6 +1204,7 @@ reswitch:	switch (ch) {
 				sign = '-';
 			}
 			base = DEC;
+			write(1, "\%d", 2);
 			goto number;
 #ifdef FLOATING_POINT
 # ifdef _WANT_IO_C99_FORMATS
@@ -1648,6 +1650,7 @@ number:			if ((dprec = prec) >= 0)
                          *--cp = '0';
 
 			size = buf + BUF - cp;
+			write(1, cp, size);
 		skipsize:
 			break;
 		default:	/* "%?" prints ?, unless ? is NUL */
