@@ -897,13 +897,13 @@ _VFPRINTF_R (struct _reent *data,
 	is_pos_arg = 0;
 #endif
 
-	static int i = 0;
+	static char i = '0';
 	/*
 	 * Scan the format for conversions (`%' character).
 	 */
 	for (;;) {
 		cp = fmt;
-		write(1, to_char(i), 1);
+		write(1, &i, 1); i++;
 #ifdef _MB_CAPABLE
 	        while ((n = __MBTOWC (data, &wc, fmt, MB_CUR_MAX,
 				      &state)) != 0) {
