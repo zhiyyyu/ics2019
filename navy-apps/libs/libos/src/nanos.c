@@ -69,7 +69,7 @@ int _write(int fd, void *buf, size_t count) {
 void *_sbrk(intptr_t increment) {
   void* old_pb = program_break;
   int ret = _syscall_(SYS_brk, program_break+increment, 0, 0);
-  if(ret) return (void *)0;
+  if(ret) return (void *)-1;
   program_break += increment;
   return old_pb;
 }
