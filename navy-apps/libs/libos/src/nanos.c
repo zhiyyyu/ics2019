@@ -74,7 +74,7 @@ void *_sbrk(intptr_t increment) {
   // _write(1, buf, 50);
   void* old_pb = program_break;
   int ret = _syscall_(SYS_brk, (uintptr_t) program_break+increment, 0, 0);
-  if(ret) return (void *)-1;
+  // if(ret) return (void *)-1;
   program_break += increment;
   return old_pb;
 }
