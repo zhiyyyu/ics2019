@@ -50,7 +50,7 @@ intptr_t _syscall_(intptr_t type, intptr_t a0, intptr_t a1, intptr_t a2) {
 }
 
 extern char _end;
-static void* program_break = &_end;
+static void* program_break = (intptr_t) &_end;
 
 void _exit(int status) {
   _syscall_(SYS_exit, status, 0, 0);
