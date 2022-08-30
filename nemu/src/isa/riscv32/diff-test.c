@@ -5,7 +5,7 @@ extern const char *regsl[];
 
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   if(ref_r->pc != cpu.pc){
-    Log("pc differs");
+    Log("pc differs: ref %x, pc %x", ref_r->pc, cpu.pc);
     return false;
   }
   for(int i=0;i<32;i++){
