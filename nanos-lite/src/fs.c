@@ -49,7 +49,7 @@ extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-  char prefix[5];
+  char prefix[4];
   for(int i=3;i<NR_FILES;i++){
     strncpy(prefix, file_table[i].name, 4);
     Log("prefix %s", prefix);
