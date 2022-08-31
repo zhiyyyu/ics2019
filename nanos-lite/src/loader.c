@@ -26,19 +26,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   return ehdr.e_entry;
 }
 
-// extern void difftest_dettach();
-// extern void difftest_attach();
-
 void naive_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
   Log("Jump to entry = 0X%x", entry);
-// #ifdef DIFF_TEST
-//   difftest_attach();
-// #endif
   ((void(*)())entry) ();
-// #ifdef DIFF_TEST
-//   difftest_dettach();
-// #endif
 }
 
 void context_kload(PCB *pcb, void *entry) {

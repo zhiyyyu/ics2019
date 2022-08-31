@@ -57,8 +57,7 @@ void _exit(int status) {
 }
 
 int _open(const char *path, int flags, mode_t mode) {
-  _exit(SYS_open);
-  return 0;
+  return _syscall_(SYS_open, path, flags, mode);
 }
 
 int _write(int fd, void *buf, size_t count) {
@@ -66,7 +65,7 @@ int _write(int fd, void *buf, size_t count) {
   return count;
 }
 
-static char buf[50];
+// static char buf[50];
 
 void *_sbrk(intptr_t increment) {
   static void* program_break = (intptr_t) &_end;
@@ -80,18 +79,16 @@ void *_sbrk(intptr_t increment) {
 }
 
 int _read(int fd, void *buf, size_t count) {
-  _exit(SYS_read);
-  return 0;
+  if(count > 0) _syscall_(SYS_read, fd, buf, count);
+  return count;
 }
 
 int _close(int fd) {
-  _exit(SYS_close);
-  return 0;
+  return _syscall_(SYS_close, fd, 0, 0);
 }
 
 off_t _lseek(int fd, off_t offset, int whence) {
-  _exit(SYS_lseek);
-  return 0;
+  return _syscall_(SYS_lseek, fd, offset, whence);
 }
 
 int _execve(const char *fname, char * const argv[], char *const envp[]) {

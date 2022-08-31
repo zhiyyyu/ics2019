@@ -2,6 +2,7 @@
 #include "syscall.h"
 #include <am.h>
 #include "debug.h"
+#include "fs.h"
 
 _Context* do_syscall(_Context *c) {
   uintptr_t a[4];
@@ -21,6 +22,22 @@ _Context* do_syscall(_Context *c) {
   case SYS_write: 
     Log("sys_write");
     c->GPRx = fs_write(a[1], (void*) a[2], a[3]); 
+    return NULL;
+  case SYS_read: 
+    Log("sys_read");
+    c->GPRx = fs_read(a[1], (void*) a[2], a[3]); 
+    return NULL;
+  case SYS_open: 
+    Log("sys_open");
+    c->GPRx = fs_open((char*) a[1], a[2], a[3]); 
+    return NULL;
+  case SYS_close: 
+    Log("sys_close");
+    c->GPRx = fs_close(a[1]); 
+    return NULL;
+  case SYS_lseek: 
+    Log("sys_lseek");
+    c->GPRx = fs_lseek(a[1], a[2], a[3]); 
     return NULL;
   case SYS_brk:
     Log("sys_brk");
