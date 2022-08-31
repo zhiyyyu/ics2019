@@ -4,13 +4,11 @@ int main() {
   FILE *fp = fopen("/dev/events", "r");
   int time = 0;
   printf("Start to receive events...\n");
-  int i = 0;
   while (1) {
-    if(i++ < 100000) continue;
-    i = 0;
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
+      putchar(ch);
       *p ++ = ch;
       if(ch == '\n') {
         *p = '\0';
