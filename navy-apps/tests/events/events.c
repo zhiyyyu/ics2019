@@ -6,11 +6,12 @@ int main() {
   printf("Start to receive events...\n");
   int i = 0;
   while (1) {
-    if(i++ > 100000) break;
+    if(i++ > 10000) break;
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
       *p ++ = ch;
+      putchar(ch);
       if(ch == '\n') {
         *p = '\0';
         break;
