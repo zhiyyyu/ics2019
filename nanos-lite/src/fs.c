@@ -26,15 +26,18 @@ size_t invalid_write(const void *buf, size_t offset, size_t len) {
 
 extern size_t serial_write(const void *buf, size_t offset, size_t len);
 extern size_t events_read(void *buf, size_t offset, size_t len);
+extern size_t fb_write(const void *buf, size_t offset, size_t len);
+extern size_t fbsync_write(const void *buf, size_t offset, size_t len);
 
 /* This is the information about all files in disk. */
 static Finfo file_table[] __attribute__((used)) = {
   {"stdin", 0, 0, 0, invalid_read, invalid_write},
   {"stdout", 0, 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, 0, invalid_read, serial_write},
+  {"/dev/fb", 0, 0, 0, invalid_read, fb_write},
   {"/dev/events", 0, 0, 0, events_read, invalid_write},
-  {"/dev/fb", 0, 0, 0, invalid_read, invalid_write},
-  {"/dev/fbsync", 0, 0, 0, invalid_read, invalid_write},
+  {"/dev/fbsync", 0, 0, 0, invalid_read, fbsync_write},
+  {"/proc/dispinfo", 0, 0, 0, invalid_read, invalid_write},
 #include "files.h"
 };
 
@@ -48,16 +51,15 @@ extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 void init_fs() {
-  // TODO: initialize the size of /dev/fb
-  char prefix[4];
   for(int i=3;i<NR_FILES;i++){
-    strncpy(prefix, file_table[i].name, 4);
-    Log("prefix %s", prefix);
-    if(!strcmp(prefix, "/dev")){
+    if(file_table[i].disk_offset == 0){
       SEPCIAL_DEV++;
     }
   }
   Log("special devices: %d", SEPCIAL_DEV);
+
+  // TODO: initialize the size of /dev/fb
+  file_table[FD_FB].size = 4 * screen_width() * screen_height();
 }
 
 int fs_open(const char *pathname, int flags, int mode){
