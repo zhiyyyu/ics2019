@@ -54,6 +54,7 @@ void init_fs() {
       SEPCIAL_DEV++;
     }
   }
+  Log("special devices: %d", SEPCIAL_DEV);
 }
 
 int fs_open(const char *pathname, int flags, int mode){
