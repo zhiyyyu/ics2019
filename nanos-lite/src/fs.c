@@ -35,7 +35,7 @@ static Finfo file_table[] __attribute__((used)) = {
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
 
 #define CHECK_OFFSET(fd, offset) \ 
-  assert(0 <= offset && offset < file_table[fd].size);
+  assert(0 <= (offset) && (offset) < file_table[fd].size);
 
 extern size_t ramdisk_write(const void *buf, size_t offset, size_t len);
 extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
