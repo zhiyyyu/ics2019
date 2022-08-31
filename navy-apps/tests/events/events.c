@@ -11,7 +11,7 @@ int main() {
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
       *p = ch;
-      putchar(*p);
+      printf("%d %c", p-buf, *p);
       p++;
       if(ch == '\n') {
         *p = '\0';
