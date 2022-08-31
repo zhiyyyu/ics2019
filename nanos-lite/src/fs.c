@@ -48,7 +48,7 @@ void init_fs() {
 int fs_open(const char *pathname, int flags, int mode){
   // 允许对所有已存在文件读写，忽略flags和mode
   int idx = -1;
-  for(int i=0;i<NR_FILES;i++){
+  for(int i=3;i<NR_FILES;i++){
     if(!strcmp(file_table[i].name, pathname)){
       idx = i; break;
     }
@@ -63,6 +63,7 @@ int fs_open(const char *pathname, int flags, int mode){
 int fs_close(int fd) {
   assert(fd >= 0);
   file_table[fd].open_offset = 0;
+  return 0;
 }
 
 size_t fs_write(int fd, const void *buf, size_t len){
@@ -79,6 +80,7 @@ size_t fs_write(int fd, const void *buf, size_t len){
     size_t offset = file_table[fd].open_offset;
     CHECK_OFFSET(fd, offset + len);
     ramdisk_write(buf, offset + file_table[fd].disk_offset, len);
+    file_table[fd].open_offset += len;
   }
   return length;
 }
@@ -88,6 +90,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
   if(fd <= 2) return 0;
   // 读取[open_offset, open_offset + len)
   size_t offset = file_table[fd].open_offset;
+  Log("fs_read: %x %d", offset, len);
   // CHECK_OFFSET(fd, offset + len);
   len = offset + len >= file_table[fd].size ? file_table[fd].size - offset : len;
   ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
