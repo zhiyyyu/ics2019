@@ -26,7 +26,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   } else {
     len = snprintf(buf, len, "ku %s\n", keyname[key & 0x7fff]);
   }
-  Log("event read: ");
+  Log("%s", buf);
   return len;
 }
 
