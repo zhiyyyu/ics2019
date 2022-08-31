@@ -39,7 +39,7 @@ static Finfo file_table[] __attribute__((used)) = {
 };
 
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
-static int SEPCIAL_DEV = 2;
+static int SEPCIAL_DEV = 3;
 
 #define CHECK_OFFSET(fd, offset) \ 
   assert(0 <= (offset) && (offset) <= file_table[fd].size);
@@ -49,10 +49,11 @@ extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-  char preffix[5];
+  char prefix[5];
   for(int i=3;i<NR_FILES;i++){
-    strncpy(preffix, file_table[i].name, 4);
-    if(!strcmp(preffix, "/dev")){
+    strncpy(prefix, file_table[i].name, 4);
+    Log("prefix %s", prefix);
+    if(!strcmp(prefix, "/dev")){
       SEPCIAL_DEV++;
     }
   }
