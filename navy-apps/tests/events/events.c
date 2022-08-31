@@ -10,8 +10,9 @@ int main() {
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
-      *p++ = ch;
-      // putchar(ch);
+      *p = ch;
+      putchar(*p);
+      p++;
       if(ch == '\n') {
         *p = '\0';
         break;
