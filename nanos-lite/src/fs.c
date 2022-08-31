@@ -37,6 +37,7 @@ static Finfo file_table[] __attribute__((used)) = {
 };
 
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
+#define SEPCIAL_DEV 4
 
 #define CHECK_OFFSET(fd, offset) \ 
   assert(0 <= (offset) && (offset) <= file_table[fd].size);
@@ -82,7 +83,7 @@ size_t fs_write(int fd, const void *buf, size_t len){
   //   length = len;
   // } else {
     size_t offset = file_table[fd].open_offset;
-    if(fd > 2) CHECK_OFFSET(fd, offset + len);
+    if(fd > SEPCIAL_DEV - 1) CHECK_OFFSET(fd, offset + len);
     if(file_table[fd].write){
       length = file_table[fd].write(buf, offset + file_table[fd].disk_offset, len);
     } else{
