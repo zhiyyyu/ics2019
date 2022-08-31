@@ -8,13 +8,13 @@ int main() {
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
-      putchar(ch);
       *p ++ = ch;
       if(ch == '\n') {
         *p = '\0';
         break;
       }
     }
+    printf("buf: %s\n", buf);
 
     int is_time = buf[0] == 't';
     time += is_time;
