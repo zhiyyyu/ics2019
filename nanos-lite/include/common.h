@@ -1,5 +1,5 @@
-#ifndef __COMMON_H__
-#define __COMMON_H__
+#ifndef __NANOS_COMMON_H__
+#define __NANOS_COMMON_H__
 
 /* Uncomment these macros to enable corresponding functionality. */
 #define HAS_CTE
