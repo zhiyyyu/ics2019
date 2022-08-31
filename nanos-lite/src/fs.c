@@ -24,11 +24,13 @@ size_t invalid_write(const void *buf, size_t offset, size_t len) {
   return 0;
 }
 
+extern size_t serial_write(const void *buf, size_t offset, size_t len);
+
 /* This is the information about all files in disk. */
 static Finfo file_table[] __attribute__((used)) = {
   {"stdin", 0, 0, 0, invalid_read, invalid_write},
-  {"stdout", 0, 0, 0, invalid_read, invalid_write},
-  {"stderr", 0, 0, 0, invalid_read, invalid_write},
+  {"stdout", 0, 0, 0, invalid_read, serial_write},
+  {"stderr", 0, 0, 0, invalid_read, serial_write},
 #include "files.h"
 };
 
@@ -69,19 +71,24 @@ int fs_close(int fd) {
 size_t fs_write(int fd, const void *buf, size_t len){
   size_t length = 0;
   assert(fd >= 0);
-  if(fd == 0){  // 0: stdin
-    return 0;
-  } else if(fd == 1 || fd == 2){ // 1: stdout, 2: stderr
-    for(int i=0;i<len;i++){
-      _putc(((char *)buf)[i]);
-    }
-    length = len;
-  } else {
+  // if(fd == 0){  // 0: stdin
+  //   return 0;
+  // } else if(fd == 1 || fd == 2){ // 1: stdout, 2: stderr
+  //   for(int i=0;i<len;i++){
+  //     _putc(((char *)buf)[i]);
+  //   }
+  //   length = len;
+  // } else {
     size_t offset = file_table[fd].open_offset;
     CHECK_OFFSET(fd, offset + len);
-    ramdisk_write(buf, offset + file_table[fd].disk_offset, len);
+    if(file_table[fd].write){
+      file_table[fd].write(buf, offset + file_table[fd].disk_offset, len);
+    } else{
+      ramdisk_write(buf, offset + file_table[fd].disk_offset, len);
+    }
     file_table[fd].open_offset += len;
-  }
+  // }
+  length = len;
   return length;
 }
 
@@ -93,7 +100,11 @@ size_t fs_read(int fd, void *buf, size_t len) {
   Log("fs_read: %x %d", offset, len);
   // CHECK_OFFSET(fd, offset + len);
   len = offset + len >= file_table[fd].size ? file_table[fd].size - offset : len;
-  ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
+  if(file_table[fd].read){
+    file_table[fd].read(buf, offset + file_table[fd].disk_offset, len);
+  } else {
+    ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
+  }
   file_table[fd].open_offset += len;
   return len;
 }
