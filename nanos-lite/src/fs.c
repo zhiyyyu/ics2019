@@ -25,12 +25,14 @@ size_t invalid_write(const void *buf, size_t offset, size_t len) {
 }
 
 extern size_t serial_write(const void *buf, size_t offset, size_t len);
+extern size_t events_read(void *buf, size_t offset, size_t len);
 
 /* This is the information about all files in disk. */
 static Finfo file_table[] __attribute__((used)) = {
   {"stdin", 0, 0, 0, invalid_read, invalid_write},
   {"stdout", 0, 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, 0, invalid_read, serial_write},
+  {"/dev/events", 0, 0, 0, events_read, invalid_write},
 #include "files.h"
 };
 
@@ -93,19 +95,20 @@ size_t fs_write(int fd, const void *buf, size_t len){
 
 size_t fs_read(int fd, void *buf, size_t len) {
   assert(fd >= 0);
-  if(fd <= 2) return 0;
+  // if(fd <= 2) return 0;
   // 读取[open_offset, open_offset + len)
   size_t offset = file_table[fd].open_offset;
   Log("fs_read: %x %d", offset, len);
   // CHECK_OFFSET(fd, offset + len);
+  int length = 0;
   len = offset + len >= file_table[fd].size ? file_table[fd].size - offset : len;
   if(file_table[fd].read){
-    file_table[fd].read(buf, offset + file_table[fd].disk_offset, len);
+    length = file_table[fd].read(buf, offset + file_table[fd].disk_offset, len);
   } else {
-    ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
+    length = ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
   }
-  file_table[fd].open_offset += len;
-  return len;
+  file_table[fd].open_offset += length;
+  return length;
 }
 
 size_t fs_lseek(int fd, size_t offset, int whence){
