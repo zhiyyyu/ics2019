@@ -105,6 +105,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
   len = offset + len >= file_table[fd].size ? file_table[fd].size - offset : len;
   if(file_table[fd].read){
     length = file_table[fd].read(buf, offset + file_table[fd].disk_offset, len);
+    Log("events_read");
   } else {
     length = ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
   }
