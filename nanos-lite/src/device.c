@@ -21,13 +21,13 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   int time = uptime();
   if((key & 0x7fff) == _KEY_NONE){
     Log("time");
-    len = snprintf(buf, len, "t %d\n", time);
+    len = sprintf(buf, "t %d\n", time);
   } else if(key & 0x8000){
     Log("kd");
-    len = snprintf(buf, len, "kd %s\n", keyname[key & 0x7fff]);
+    len = sprintf(buf, "kd %s\n", keyname[key & 0x7fff]);
   } else {
     Log("ku");
-    len = snprintf(buf, len, "ku %s\n", keyname[key & 0x7fff]);
+    len = sprintf(buf, "ku %s\n", keyname[key & 0x7fff]);
   }
   Log("%s, %d", buf, len);
   return len;
