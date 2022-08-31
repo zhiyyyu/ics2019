@@ -11,13 +11,13 @@ int main() {
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
       *p++ = ch;
-      putchar(ch);
+      // putchar(ch);
       if(ch == '\n') {
         *p = '\0';
         break;
       }
     }
-    // for(int ii=0;ii<j;ii++) putchar(buf[ii]);
+    for(int ii=0;ii<256;ii++) putchar(buf[ii]);
     // printf("buf: %s buf[0]: %c\n", buf, buf[0]);
     if(buf[0] == '\0') continue;
 
