@@ -6,18 +6,18 @@ int main() {
   printf("Start to receive events...\n");
   int i = 0;
   while (1) {
-    if(i++ > 10000) break;
+    if(i++ > 100) break;
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
-      *p ++ = ch;
+      *p = ch; p++;
       putchar(ch);
       if(ch == '\n') {
         *p = '\0';
         break;
       }
     }
-    printf("buf: %s buf[0] %c\n", buf, buf[0]);
+    printf("buf: %s buf[0]: %c\n", buf, buf[0]);
 
     int is_time = buf[0] == 't';
     time += is_time;
