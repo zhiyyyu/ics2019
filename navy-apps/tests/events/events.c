@@ -6,7 +6,7 @@ int main() {
   printf("Start to receive events...\n");
   int i = 0;
   while (1) {
-    if(i++ < 10000) continue;
+    if(i++ < 100000) continue;
     i = 0;
     char buf[256];
     char *p = buf, ch;
