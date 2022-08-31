@@ -105,6 +105,7 @@ size_t fs_lseek(int fd, size_t offset, int whence){
     file_table[fd].open_offset += offset;
     break;
   case SEEK_END:
+    Log("offset %d, size %d", offset, file_table[fd].size);
     CHECK_OFFSET(fd, offset + file_table[fd].size);
     file_table[fd].open_offset = file_table[fd].size + offset;
     break;
