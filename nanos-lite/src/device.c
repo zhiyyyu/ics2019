@@ -30,7 +30,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
     Log("ku");
     sprintf(buf, "ku %s\n", keyname[key & 0x7fff]);
   }
-  Log("%s, %d", buf, strlen(len));
+  Log("%s, %d", buf, strlen(buf));
   return strlen(buf);
 }
 
