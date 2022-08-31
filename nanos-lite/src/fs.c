@@ -49,8 +49,10 @@ extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
+  char preffix[5];
   for(int i=3;i<NR_FILES;i++){
-    if(!strcmp(file_table[i].name, "/dev")){
+    strncpy(preffix, file_table[i].name, 4);
+    if(!strcmp(preffix, "/dev")){
       SEPCIAL_DEV++;
     }
   }
