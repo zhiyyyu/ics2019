@@ -90,6 +90,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
   size_t offset = file_table[fd].open_offset;
   CHECK_OFFSET(fd, offset + len);
   ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
+  file_table[fd].open_offset += len;
   return len;
 }
 
