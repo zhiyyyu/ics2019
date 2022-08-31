@@ -5,6 +5,8 @@ int main() {
   int time = 0;
   printf("Start to receive events...\n");
   while (1) {
+    static int i = 0;
+    if(i++ < 10000) continue;
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
