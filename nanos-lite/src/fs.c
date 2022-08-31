@@ -53,7 +53,7 @@ extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 void init_fs() {
   for(int i=3;i<NR_FILES;i++){
-    if(file_table[i].disk_offset == 0){
+    if(file_table[i].size == 0){
       SEPCIAL_DEV++;
     }
   }
