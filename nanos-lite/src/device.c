@@ -22,16 +22,16 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   char* p = buf;
   if((key & 0x7fff) == _KEY_NONE){
     Log("time");
-    len = sprintf(p, "t %d\n", time);
+    sprintf(p, "t %d\n", time);
   } else if(key & 0x8000){
     Log("kd");
-    len = sprintf(buf, "kd %s\n", keyname[key & 0x7fff]);
+    sprintf(buf, "kd %s\n", keyname[key & 0x7fff]);
   } else {
     Log("ku");
-    len = sprintf(buf, "ku %s\n", keyname[key & 0x7fff]);
+    sprintf(buf, "ku %s\n", keyname[key & 0x7fff]);
   }
   Log("%s, %d", buf, len);
-  return len;
+  return strlen(buf);
 }
 
 static char dispinfo[128] __attribute__((used)) = {};
