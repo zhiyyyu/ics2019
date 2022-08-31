@@ -88,7 +88,8 @@ size_t fs_read(int fd, void *buf, size_t len) {
   if(fd <= 2) return 0;
   // 读取[open_offset, open_offset + len)
   size_t offset = file_table[fd].open_offset;
-  CHECK_OFFSET(fd, offset + len);
+  // CHECK_OFFSET(fd, offset + len);
+  len = offset + len > file_table[fd].size ? file_table[fd].size - offset : len;
   ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
   file_table[fd].open_offset += len;
   return len;
