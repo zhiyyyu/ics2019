@@ -116,16 +116,16 @@ size_t fs_lseek(int fd, size_t offset, int whence){
   switch (whence)
   {
   case SEEK_SET:
-    CHECK_OFFSET(fd, offset);
+    if(fd > SEPCIAL_DEV - 1) CHECK_OFFSET(fd, offset);
     file_table[fd].open_offset = offset;
     break;
   case SEEK_CUR:
-    CHECK_OFFSET(fd, offset + file_table[fd].open_offset);
+    if(fd > SEPCIAL_DEV - 1) CHECK_OFFSET(fd, offset + file_table[fd].open_offset);
     file_table[fd].open_offset += offset;
     break;
   case SEEK_END:
     // Log("offset %d, size %d", offset, file_table[fd].size);
-    CHECK_OFFSET(fd, offset + file_table[fd].size);
+    if(fd > SEPCIAL_DEV - 1) CHECK_OFFSET(fd, offset + file_table[fd].size);
     file_table[fd].open_offset = file_table[fd].size + offset;
     break;
   default:
