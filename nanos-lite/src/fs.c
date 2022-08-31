@@ -99,7 +99,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
   // if(fd <= 2) return 0;
   // 读取[open_offset, open_offset + len)
   size_t offset = file_table[fd].open_offset;
-  Log("fs_read: %x %d", offset, len);
+  // Log("fs_read: %x %d", offset, len);
   // CHECK_OFFSET(fd, offset + len);
   int length = 0;
   len = offset + len >= file_table[fd].size ? file_table[fd].size - offset : len;
