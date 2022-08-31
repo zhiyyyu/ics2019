@@ -5,21 +5,16 @@ int main() {
   int time = 0;
   printf("Start to receive events...\n");
   int i = 0;
+  char buf[256];
   while (1) {
     if(i++ > 10) break;
-    char buf[256];
     char *p = buf, ch;
-    int j = 0;
     while ((ch = fgetc(fp)) != -1) {
-      // *p++ = ch;
-      // putchar(ch);
-      // if(ch == '\n') {
-      //   *p = '\0';
-      //   break;
-      // }
-      buf[j++] = ch;
-      if(ch == '\n'){
-        buf[j] = '\0'; break;
+      *p++ = ch;
+      putchar(ch);
+      if(ch == '\n') {
+        *p = '\0';
+        break;
       }
     }
     // for(int ii=0;ii<j;ii++) putchar(buf[ii]);
