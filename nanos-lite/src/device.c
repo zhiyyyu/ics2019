@@ -24,7 +24,7 @@ size_t events_read(void *buf, size_t offset, size_t len) {
   } else if(key & 0x8000){
     len = sprintf(buf, "kd %s\n", keyname[key & 0x7fff]);
   } else {
-    len = sprintf(buf, "ku %s\n", keyname[key & 0x7ffff]);
+    len = sprintf(buf, "ku %s\n", keyname[key & 0x7fff]);
   }
   // Log("event read: ");
   return len;
