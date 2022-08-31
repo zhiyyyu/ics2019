@@ -53,7 +53,7 @@ void init_fs() {
 int fs_open(const char *pathname, int flags, int mode){
   // 允许对所有已存在文件读写，忽略flags和mode
   int idx = -1;
-  for(int i=3;i<NR_FILES;i++){
+  for(int i=0;i<NR_FILES;i++){
     if(!strcmp(file_table[i].name, pathname)){
       idx = i; break;
     }
