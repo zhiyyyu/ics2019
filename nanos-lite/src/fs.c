@@ -33,11 +33,13 @@ static Finfo file_table[] __attribute__((used)) = {
   {"stdout", 0, 0, 0, invalid_read, serial_write},
   {"stderr", 0, 0, 0, invalid_read, serial_write},
   {"/dev/events", 0, 0, 0, events_read, invalid_write},
+  {"/dev/fb", 0, 0, 0, invalid_read, invalid_write},
+  {"/dev/fbsync", 0, 0, 0, invalid_read, invalid_write},
 #include "files.h"
 };
 
 #define NR_FILES (sizeof(file_table) / sizeof(file_table[0]))
-#define SEPCIAL_DEV 4
+static int SEPCIAL_DEV = 2;
 
 #define CHECK_OFFSET(fd, offset) \ 
   assert(0 <= (offset) && (offset) <= file_table[fd].size);
@@ -47,13 +49,17 @@ extern size_t ramdisk_read(void *buf, size_t offset, size_t len);
 
 void init_fs() {
   // TODO: initialize the size of /dev/fb
-
+  for(int i=3;i<NR_FILES;i++){
+    if(!strcmp(file_table[i].name, "/dev")){
+      SEPCIAL_DEV++;
+    }
+  }
 }
 
 int fs_open(const char *pathname, int flags, int mode){
   // 允许对所有已存在文件读写，忽略flags和mode
   int idx = -1;
-  for(int i=0;i<NR_FILES;i++){
+  for(int i=3;i<NR_FILES;i++){
     if(!strcmp(file_table[i].name, pathname)){
       idx = i; break;
     }
