@@ -9,7 +9,7 @@ int main() {
     if(i++ > 10) break;
     char buf[256];
     char *p = buf, ch;
-    int i = 0;
+    int j = 0;
     while ((ch = fgetc(fp)) != -1) {
       // *p++ = ch;
       // putchar(ch);
@@ -17,11 +17,12 @@ int main() {
       //   *p = '\0';
       //   break;
       // }
-      buf[i++] = ch;
+      buf[j++] = ch;
       if(ch == '\n'){
-        buf[i] = '\0'; break;
+        buf[j] = '\0'; break;
       }
     }
+    for(int ii=0;ii<j;ii++) putchar(buf[ii]);
     printf("buf: %s buf[0]: %c\n", buf, buf[0]);
 
     int is_time = buf[0] == 't';
