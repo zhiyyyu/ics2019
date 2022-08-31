@@ -7,7 +7,7 @@ int main() {
   int i = 0;
   char buf[256];
   while (1) {
-    if(i++ > 10) break;
+    // if(i++ > 10) break;
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
       *p++ = ch;
