@@ -10,6 +10,7 @@ int main() {
     char buf[256];
     char *p = buf, ch;
     while ((ch = fgetc(fp)) != -1) {
+      if(ch == ' ') continue;
       *p = ch;
       printf("%d %c\n", p-buf, *p);
       p++;
