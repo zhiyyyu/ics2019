@@ -743,7 +743,7 @@ PAL_LoadObjectDesc(
       pNew->next = lpDesc;
       lpDesc = pNew;
 
-      if(strlen(buf) < 512) break;
+      // if(strlen(buf) < 512) break;
    }
 
    fclose(fp);
