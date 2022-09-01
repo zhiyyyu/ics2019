@@ -720,7 +720,7 @@ PAL_LoadObjectDesc(
    //
    while (fgets(buf, 512, fp) != NULL)
    {
-      printf("fgets buf: %s\n", buf);
+      // printf("fgets buf: %s\n", buf);
       p = strchr(buf, '=');
       if (p == NULL)
       {
@@ -742,6 +742,8 @@ PAL_LoadObjectDesc(
 
       pNew->next = lpDesc;
       lpDesc = pNew;
+
+      if(strlen(buf) < 512) break;
    }
 
    fclose(fp);
