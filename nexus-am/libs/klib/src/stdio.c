@@ -11,6 +11,7 @@ int printf(const char *fmt, ...) {
   ret = vsprintf(buf, fmt, args);
   va_end(args);
   if(!ret) for(int i=0;buf[i] != '\0';i++) _putc(buf[i]);
+  _putc(ret == 0);
   return ret;
 }
 
