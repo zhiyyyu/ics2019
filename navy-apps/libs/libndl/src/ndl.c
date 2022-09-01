@@ -143,7 +143,9 @@ static void get_display_info() {
     sscanf(delim + 1, "%s", value);
     // printf("value %s\n", value);
     if (strcmp(key, "WIDTH") == 0) sscanf(value, "%d", &screen_w);
+    else printf("1\n");
     if (strcmp(key, "HEIGHT") == 0) sscanf(value, "%d", &screen_h);
+    else printf("2\n");
   }
   fclose(dispinfo);
   assert(screen_w > 0 && screen_h > 0);
