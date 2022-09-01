@@ -11,8 +11,7 @@ int printf(const char *fmt, ...) {
   ret = vsprintf(buf, fmt, args);
   va_end(args);
   if(!ret) for(int i=0;buf[i] != '\0';i++) _putc(buf[i]);
-  _putc(ret == 0);
-  return ret;
+  return strlen(buf);
 }
 
 int vsprintf(char *out, const char *fmt, va_list ap) {
@@ -51,7 +50,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
     }
   }
   *q = '\0';
-  return q-out;
+  return 0;
 }
 
 int sprintf(char *out, const char *fmt, ...) {
