@@ -57,3 +57,7 @@ void context_uload(PCB *pcb, const char *filename) {
 
   pcb->cp = _ucontext(&pcb->as, stack, stack, (void *)entry, NULL);
 }
+
+int execve(const char *fname, char * const argv[], char *const envp[]) {
+  naive_uload(NULL, fname);
+}
