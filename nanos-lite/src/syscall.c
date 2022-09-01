@@ -42,6 +42,9 @@ _Context* do_syscall(_Context *c) {
   case SYS_brk:
     // Log("sys_brk");
     return NULL;
+  case SYS_execve:
+    Log("sys_execve");
+    return NULL;
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
   return NULL;
