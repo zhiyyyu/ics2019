@@ -24,7 +24,7 @@ _Context* do_syscall(_Context *c) {
     c->GPRx = fs_write(a[1], (void*) a[2], a[3]); 
     return NULL;
   case SYS_read: 
-    // Log("sys_read");
+    Log("sys_read");
     c->GPRx = fs_read(a[1], (void*) a[2], a[3]); 
     return NULL;
   case SYS_open: 
