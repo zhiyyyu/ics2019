@@ -44,8 +44,8 @@ _Context* do_syscall(_Context *c) {
     return NULL;
   case SYS_execve:
     Log("sys_execve");
-    c->GPRx = execve(a[1], a[2], a[3]);
     Log("filename %s, args %s, envp %s", a[1], a[2], a[3]);
+    c->GPRx = execve(a[1], a[2], a[3]);
     return NULL;
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
