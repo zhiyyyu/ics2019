@@ -20,11 +20,11 @@ _Context* do_syscall(_Context *c) {
     // Log("sys_yield");
     _yield(); return NULL;
   case SYS_write: 
-    Log("sys_write");
+    // Log("sys_write");
     c->GPRx = fs_write(a[1], (void*) a[2], a[3]); 
     return NULL;
   case SYS_read: 
-    Log("sys_read");
+    // Log("sys_read");
     c->GPRx = fs_read(a[1], (void*) a[2], a[3]); 
     return NULL;
   case SYS_open: 
@@ -36,7 +36,7 @@ _Context* do_syscall(_Context *c) {
     c->GPRx = fs_close(a[1]); 
     return NULL;
   case SYS_lseek: 
-    Log("sys_lseek");
+    // Log("sys_lseek");
     c->GPRx = fs_lseek(a[1], a[2], a[3]); 
     return NULL;
   case SYS_brk:
