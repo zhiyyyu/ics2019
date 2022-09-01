@@ -75,6 +75,7 @@ int fs_open(const char *pathname, int flags, int mode){
     Log("file %s not found", pathname);
     assert(0);
   }
+  file_table[idx].open_offset = 0;
   return idx;
 }
 
