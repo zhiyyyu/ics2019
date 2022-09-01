@@ -59,7 +59,7 @@ int sprintf(char *out, const char *fmt, ...) {
   va_start(args, fmt);  // 变参放入堆栈构造
   ret = vsprintf(out, fmt, args);
   va_end(args);
-  return ret;
+  return strlen(out);
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {

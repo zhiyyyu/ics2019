@@ -41,7 +41,7 @@ size_t dispinfo_read(void *buf, size_t offset, size_t len) {
   len = sprintf(buf, dispinfo+offset);
   // strncpy((char*) buf, dispinfo + offset, len);
   Log("%d %s %s %d", strlen(buf), buf, dispinfo, offset);
-  return strlen(buf);
+  return 128;
 }
 
 size_t fb_write(const void *buf, size_t offset, size_t len) {
