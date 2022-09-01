@@ -122,9 +122,9 @@ size_t fs_read(int fd, void *buf, size_t len) {
   } else {
     length = ramdisk_read(buf, offset + file_table[fd].disk_offset, len);
   }
-  file_table[fd].open_offset += len;
+  file_table[fd].open_offset += length;
   Log("read length %d %d", len, length);
-  return len;
+  return length;
 }
 
 size_t fs_lseek(int fd, size_t offset, int whence){
