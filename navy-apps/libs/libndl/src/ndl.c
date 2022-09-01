@@ -133,8 +133,8 @@ static void get_display_info() {
   assert(dispinfo);
   screen_w = screen_h = 0;
   char buf[128], key[128], value[128], *delim;
-  int i = 0;
-  while (fgets(buf, 128, dispinfo) && i++ < 2) {
+  // int i = 0;
+  while (fgets(buf, 128, dispinfo)) {
     // printf("buf %s", buf);
     delim = strchr(buf, ':');
     // if(!delim) printf("do not find :");
