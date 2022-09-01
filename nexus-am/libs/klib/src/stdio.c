@@ -50,7 +50,6 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
     }
   }
   *q = '\0';
-  *(q+1) = -1;
   return 0;
 }
 
