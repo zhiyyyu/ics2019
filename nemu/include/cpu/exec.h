@@ -16,7 +16,7 @@ static inline rtlreg_t* getCSRs(int32_t csr) {
   case 0x142: return &scause;
   case 0x100: return &sstatus;
   case 0x141: return &sepc;
-  // case 0x180: return &satp;
+  case 0x180: return &satp;
   default:
     Log("[exec.h] Unkown CSRs");
     TODO();
