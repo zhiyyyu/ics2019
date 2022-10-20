@@ -45,6 +45,10 @@ typedef struct _Event {
   const char *msg;
 } _Event;
 
+// struct _Context {
+//   uintptr_t gpr[32], cause, status, epc;
+//   struct _AddressSpace *as;
+// };
 // Arch-dependent processor context
 typedef struct _Context _Context;
 

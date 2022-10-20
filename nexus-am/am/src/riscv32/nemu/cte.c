@@ -59,6 +59,8 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
 _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
   _Context* p = (_Context*)&stack;
   // TODO: set entry as return addr
+  p->epc = entry;
+  p->as = NULL;
   return p;
 }
 

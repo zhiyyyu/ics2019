@@ -26,7 +26,7 @@ void hello_fun(void *arg) {
 
 void init_proc() {
   context_kload(&pcb[0], (void*) hello_fun);
-  context_uload(&pcb[1], "/bin/init");
+  // context_uload(&pcb[1], "/bin/init");
   // context_uload(&pcb[1], "/bin/hello");
 
   switch_boot_pcb();
@@ -35,7 +35,7 @@ void init_proc() {
 
   // load program here
   
-  // naive_uload(NULL, "/bin/init");
+  naive_uload(NULL, "/bin/init");
 }
 
 /**
