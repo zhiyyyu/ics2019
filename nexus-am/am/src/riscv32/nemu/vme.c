@@ -21,6 +21,9 @@ static inline void set_satp(void *pdir) {
   asm volatile("csrw satp, %0" : : "r"(0x80000000 | ((uintptr_t)pdir >> 12)));
 }
 
+/**
+ * @brief: vme初始化
+ */
 int _vme_init(void* (*pgalloc_f)(size_t), void (*pgfree_f)(void*)) {
   pgalloc_usr = pgalloc_f;
   pgfree_usr = pgfree_f;
@@ -55,6 +58,10 @@ int _vme_init(void* (*pgalloc_f)(size_t), void (*pgfree_f)(void*)) {
   return 0;
 }
 
+/**
+ * @brief: 创建默认地址空间
+ * @param {_AddressSpace} *as
+ */
 int _protect(_AddressSpace *as) {
   PDE *updir = (PDE*)(pgalloc_usr(1));
   as->ptr = updir;
@@ -66,6 +73,10 @@ int _protect(_AddressSpace *as) {
   return 0;
 }
 
+/**
+ * @brief: 销毁指定的地址空间
+ * @param {_AddressSpace} *as
+ */
 void _unprotect(_AddressSpace *as) {
 }
 
@@ -81,6 +92,13 @@ void __am_switch(_Context *c) {
   }
 }
 
+/**
+ * @brief: 将as中va映射到pa，权限为prot
+ * @param {_AddressSpace} *as
+ * @param {void} *va
+ * @param {void} *pa
+ * @param {int} prot
+ */
 int _map(_AddressSpace *as, void *va, void *pa, int prot) {
   return 0;
 }

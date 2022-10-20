@@ -82,6 +82,7 @@ _Context *_kcontext(_Area kstack, void (*entry)(void *), void *arg);
 
 // ================= Virtual Memory Extension (VME) ==================
 
+// void get_satp(void *pdir);
 int _vme_init(void *(*pgalloc)(size_t size), void (*pgfree)(void *));
 int _protect(_AddressSpace *as);
 void _unprotect(_AddressSpace *as);

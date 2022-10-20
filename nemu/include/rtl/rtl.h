@@ -7,7 +7,7 @@
 #include "rtl/rtl-wrapper.h"
 
 extern rtlreg_t s0, s1, t0, t1, ir;
-extern rtlreg_t stvec, sepc, sstatus, scause;
+extern rtlreg_t stvec, sepc, sstatus, scause, satp;
 
 void raise_intr(uint32_t NO, vaddr_t epc);
 void return_intr();
