@@ -7,12 +7,12 @@ paddr_t page_translate(vaddr_t addr) {
   uint32_t vpn_0 = (addr >> 10) & 0x3ff;
   uint32_t vpn_1 = (addr >> 20) & 0xfff;
   uintptr_t _satp = 0x822e5000;
-  _satp = *getCSRs(0x180);
+  // _satp = *getCSRs(0x180);
   // asm ("csrrs %0, satp" : "=r"(_satp) : );
   Log("satp: 0x%x", _satp);
   _satp &= 0x3fffff << 12;
   Log("first pte: 0x%x", (_satp) | (vpn_1 << 2));
-  uint32_t ppn = paddr_read((satp << 12) | (vpn_1 << 2) , 4);
+  uint32_t ppn = paddr_read(((satp << 12) | (vpn_1 << 2)) , 4);
   assert((ppn & 1) == 1);
   ppn &= 0x3fffff << 12;
   Log("second pte: 0x%x", (ppn &(~0x3ff)) | (vpn_0 << 2));
