@@ -4,7 +4,7 @@
 
 #define PG_ALIGN __attribute((aligned(PGSIZE)))
 
-PDE kpdirs[NR_PDE] PG_ALIGN = {};
+static PDE kpdirs[NR_PDE] PG_ALIGN = {};
 static PTE kptabs[(PMEM_SIZE + MMIO_SIZE) / PGSIZE] PG_ALIGN = {};
 static void* (*pgalloc_usr)(size_t) = NULL;
 static void (*pgfree_usr)(void*) = NULL;
