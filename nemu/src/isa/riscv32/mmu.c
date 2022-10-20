@@ -6,11 +6,11 @@ paddr_t page_translate(vaddr_t addr) {
   uint32_t offset = addr & 0xfff;
   uint32_t vpn_0 = (addr >> 12) & 0x3ff;
   uint32_t vpn_1 = (addr >> 22) & 0x3ff;
-  uint32_t satp = getCSRs(0x180);
-  Log("satp: 0x%x", satp);
+  uintptr_t _satp = *getCSRs(0x180);
+  Log("satp: 0x%x", _satp);
   // asm ("csrr t0, satp; mv %0, t0" : "=r"(satp) : );
-  satp &= 0x3fffff;
-  Log("first pte: 0x%x", (satp << 12) | (vpn_1 << 2));
+  _satp &= 0x3fffff;
+  Log("first pte: 0x%x", (_satp << 12) | (vpn_1 << 2));
   uint32_t ppn = paddr_read((satp << 12) | (vpn_1 << 2) , 4);
   assert((ppn & 1) == 1);
   ppn &= 0x3fffff << 12;
