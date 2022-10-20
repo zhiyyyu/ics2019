@@ -10,7 +10,7 @@ static _Context* do_event(_Event e, _Context* c) {
   case _EVENT_YIELD: 
     c = schedule(c);
     // Log("get yield."); 
-    break;
+    return c;
   case _EVENT_SYSCALL: 
     // Log("get syscall.");
     do_syscall(c); // 返回值保存在a0

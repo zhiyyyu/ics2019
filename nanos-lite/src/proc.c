@@ -35,7 +35,7 @@ void init_proc() {
 
   // load program here
   
-  // naive_uload(NULL, "/bin/init");
+  naive_uload(NULL, "/bin/init");
 }
 
 /**
