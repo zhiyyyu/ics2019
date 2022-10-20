@@ -19,7 +19,7 @@ paddr_t page_translate(vaddr_t addr) {
   paddr_t paddr = paddr_read((ppn << 12) | (vpn_0 << 2), 4);
   assert((paddr & 1) == 1);
   Log("page translate: 0x%x -> 0x%x", addr, paddr);
-  return (paddr & 0x3ff) | offset;
+  return (paddr >> 12 << 12) | offset;
   // return addr;
 }
 
