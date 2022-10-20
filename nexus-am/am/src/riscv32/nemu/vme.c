@@ -94,6 +94,9 @@ int _map(_AddressSpace *as, void *va, void *pa, int prot) {
  * @param {void} *args
  */
 _Context *_ucontext(_AddressSpace *as, _Area ustack, _Area kstack, void *entry, void *args) {
-  
-  return NULL;
+  _Context* p = (_Context*)ustack.start;
+  // TODO: set entry as return addr
+  p->epc = entry;
+  p->as = NULL;
+  return p;
 }
