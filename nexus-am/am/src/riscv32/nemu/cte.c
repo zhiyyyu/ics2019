@@ -4,6 +4,10 @@
 
 static _Context* (*user_handler)(_Event, _Context*) = NULL;
 
+/**
+ * @brief: 恢复上下文
+ * @param {_Context} *c
+ */
 _Context* __am_irq_handle(_Context *c) {
   // printf("__am_irq_handle: ");
   // printf("scause: %d, sstatus %d, sepc 0X%x\n", c->cause, c->status, c->epc);
@@ -45,8 +49,17 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
   return 0;
 }
 
+/**
+ * @brief: 内核上下文
+ *    用于为新程序创建上下文，并返回cp
+ * @param {_Area} stack
+ * @param {void} * entry 返回地址
+ * @param {void} *arg 可以先忽略
+ */
 _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
-  return NULL;
+  _Context* p = (_Context*)&stack;
+  // TODO: set entry as return addr
+  return p;
 }
 
 void _yield() {

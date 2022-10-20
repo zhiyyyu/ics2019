@@ -40,6 +40,11 @@ void naive_uload(PCB *pcb, const char *filename) {
   ((void(*)())entry) ();
 }
 
+/**
+ * @brief: 
+ * @param {PCB} *pcb
+ * @param {void} *entry
+ */
 void context_kload(PCB *pcb, void *entry) {
   _Area stack;
   stack.start = pcb->stack;
@@ -48,6 +53,11 @@ void context_kload(PCB *pcb, void *entry) {
   pcb->cp = _kcontext(stack, entry, NULL);
 }
 
+/**
+ * @brief: 加载用户程序
+ * @param {PCB} *pcb
+ * @param {char} *filename
+ */
 void context_uload(PCB *pcb, const char *filename) {
   uintptr_t entry = loader(pcb, filename);
 
