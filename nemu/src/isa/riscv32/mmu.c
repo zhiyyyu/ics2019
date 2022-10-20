@@ -9,7 +9,6 @@ paddr_t page_translate(vaddr_t addr) {
   uint32_t satp = 0x822e5;
   Log("satp: 0x%x", satp);
   // asm ("csrr %0, satp" : "=r"(satp) : );
-  Log("satp: 0x%x", satp);
   satp &= 0x3fffff;
   Log("first pte: 0x%x", (satp << 12) | (vpn_1 << 2));
   uint32_t ppn = paddr_read((satp << 12) | (vpn_1 << 2) , 4);
