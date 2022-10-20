@@ -6,7 +6,9 @@ paddr_t page_translate(vaddr_t addr) {
   uint32_t offset = addr & 0xfff;
   uint32_t vpn_0 = (addr >> 12) & 0x3ff;
   uint32_t vpn_1 = (addr >> 22) & 0x3ff;
-  uint32_t satp = *getCSRs(0x180);
+  uint32_t satp;
+  Log("satp: 0x%x", satp);
+  // asm volatile("csrr %0, satp" : "=r"(satp) : );
   Log("satp: 0x%x", satp);
   satp &= 0x3fffff;
   Log("first pte: %d", (satp << 12) | (vpn_1 << 2));
