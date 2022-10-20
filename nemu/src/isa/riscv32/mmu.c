@@ -4,9 +4,9 @@
 
 paddr_t page_translate(vaddr_t addr) {
   uint32_t offset = addr & 0xfff;
-  uint32_t vpn_0 = (addr >> 12) & 0x3ff;
-  uint32_t vpn_1 = (addr >> 22) & 0x3ff;
-  uintptr_t _satp = 0x822e5;
+  uint32_t vpn_0 = (addr >> 10) & 0x3ff;
+  uint32_t vpn_1 = (addr >> 20) & 0xfff;
+  uintptr_t _satp = 0x822e5000 >> 12;
   // _satp = *getCSRs(0x180);
   // asm ("csrrs %0, satp" : "=r"(_satp) : );
   Log("satp: 0x%x", _satp);
