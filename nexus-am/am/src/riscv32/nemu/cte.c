@@ -57,7 +57,7 @@ int _cte_init(_Context*(*handler)(_Event, _Context*)) {
  * @param {void} *arg 可以先忽略
  */
 _Context *_kcontext(_Area stack, void (*entry)(void *), void *arg) {
-  _Context* p = (_Context*)&stack;
+  _Context* p = (_Context*)stack.start;
   // TODO: set entry as return addr
   p->epc = entry;
   p->as = NULL;

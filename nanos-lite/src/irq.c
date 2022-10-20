@@ -8,9 +8,8 @@ extern _Context* do_syscall(_Context *c);
 static _Context* do_event(_Event e, _Context* c) {
   switch (e.event) {
   case _EVENT_YIELD: 
-    c = schedule(c);
     // Log("get yield."); 
-    return c;
+    return schedule(c);
   case _EVENT_SYSCALL: 
     // Log("get syscall.");
     do_syscall(c); // 返回值保存在a0
