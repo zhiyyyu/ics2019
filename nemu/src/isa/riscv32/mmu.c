@@ -11,8 +11,9 @@ paddr_t page_translate(vaddr_t addr) {
   // asm volatile("csrrs %0, satp" : "=r"(_satp) : );
   Log("satp: 0x%x", _satp);
   _satp &= 0x3fffff;
-  Log("first pte: 0x%x", (_satp << 12) | (vpn_1 << 2));
-  paddr_t ppn = paddr_read((satp << 12) | (vpn_1 << 2) , 4);
+  paddr_t tmp = (_satp << 12) | (vpn_1 << 2);
+  Log("first pte: 0x%x", tmp);
+  paddr_t ppn = paddr_read(tmp , 4);
   assert((ppn & 1) == 1);
   ppn >>= 10;
   Log("second pte: 0x%x", (ppn << 12) | (vpn_0 << 2));
