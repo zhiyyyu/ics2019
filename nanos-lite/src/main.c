@@ -17,9 +17,9 @@ int main() {
 // #ifdef DIFF_TEST
 //   difftest_dettach();
 // #endif
-
-#ifdef HAS_VME
+  
   Log("enable vme");
+#ifdef HAS_VME
   init_mm();
 #endif
 

@@ -1,4 +1,5 @@
 #include "memory.h"
+#include "am.h"
 
 static void *pf = NULL;
 
