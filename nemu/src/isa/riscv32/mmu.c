@@ -10,7 +10,7 @@ paddr_t page_translate(vaddr_t addr) {
   _satp = 0x800822e5;
   // asm volatile("csrrs %0, satp" : "=r"(_satp) : );
   Log("satp: 0x%x", _satp);
-  _satp &= 0x3fffff;
+  // _satp &= 0x3fffff;
   paddr_t tmp = (_satp << 12) | (vpn_1 << 2);
   Log("first pte: 0x%x", tmp);
   paddr_t ppn = paddr_read(tmp , 4);
