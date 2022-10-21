@@ -26,7 +26,7 @@ void init_proc() {
 
   // load program here
   // sscanf()
-  naive_uload(NULL, "/bin/init");
+  naive_uload(NULL, "/bin/hello");
 }
 
 _Context* schedule(_Context *prev) {
