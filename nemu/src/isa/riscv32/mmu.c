@@ -15,7 +15,7 @@ paddr_t page_translate(vaddr_t addr) {
   Log("first pte: 0x%x", tmp);
   paddr_t ppn = paddr_read(tmp , 4);
   assert((ppn & 1) == 1);
-  ppn = (ppn >> 10) & 0x3fffff;
+  ppn = (ppn >> 10);
   tmp = (ppn << 12) | (vpn_0 << 2);
   Log("second pte: 0x%x", tmp);
   paddr_t paddr = paddr_read(tmp, 4);
