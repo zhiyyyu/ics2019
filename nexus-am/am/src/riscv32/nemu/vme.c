@@ -1,6 +1,7 @@
 #include <am.h>
 #include <riscv32.h>
 #include <nemu.h>
+#include <stdio.h>
 
 #define PG_ALIGN __attribute((aligned(PGSIZE)))
 
@@ -51,7 +52,7 @@ int _vme_init(void* (*pgalloc_f)(size_t), void (*pgfree_f)(void*)) {
       }
     }
   }
-
+  printf("kpdirs: %x\n", kpdirs);
   set_satp(kpdirs);
   vme_enable = 1;
 
