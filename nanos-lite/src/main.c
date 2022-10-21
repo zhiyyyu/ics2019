@@ -19,6 +19,7 @@ int main() {
 // #endif
 
 #ifdef HAS_VME
+  Log("enable vme");
   init_mm();
 #endif
 
