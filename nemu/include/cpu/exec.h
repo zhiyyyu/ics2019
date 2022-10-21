@@ -4,11 +4,11 @@
 #include "nemu.h"
 #include "monitor/diff-test.h"
 
-// #ifdef RISCV32
-// #include "isa/riscv32/include/isa/rtl.h"
-// #else
+#ifdef RISCV32
+#include "isa/riscv32/include/isa/rtl.h"
+#else
 #include "rtl/rtl.h"
-// #endif
+#endif
 
 static inline rtlreg_t* getCSRs(int32_t csr) {
   switch (csr) {
@@ -19,6 +19,7 @@ static inline rtlreg_t* getCSRs(int32_t csr) {
   case 0x180: return &satp;
   default:
     Log("[exec.h] Unkown CSRs");
+    return &satp;
     TODO();
   }
 }
