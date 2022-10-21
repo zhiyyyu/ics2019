@@ -21,6 +21,7 @@ IOMap* fetch_mmio_map(paddr_t addr);
 /* Memory accessing interfaces */
 
 uint32_t paddr_read(paddr_t addr, int len) {
+  Log("paddr_read: 0x%x", addr);
   if (map_inside(&pmem_map, addr)) {
     uint32_t offset = addr - pmem_map.low;
     return *(uint32_t *)(pmem + offset) & (~0u >> ((4 - len) << 3));
