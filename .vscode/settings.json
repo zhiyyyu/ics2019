@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "setjmp.h": "c",
+        "debug.h": "c",
+        "nemu.h": "c",
+        "mmu.h": "c",
+        "stdint.h": "c",
+        "memory.h": "c",
+        "am.h": "c",
+        "rtl.h": "c",
+        "exec.h": "c",
+        "stdio.h": "c",
+        "relop.h": "c",
+        "klib.h": "c",
+        "common.h": "c",
+        "reg.h": "c",
+        "diff-test.h": "c",
+        "features.h": "c"
+    },
+    "ros.distro": "noetic"
+}
